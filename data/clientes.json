@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "name": "Pepe Perez",
+        "dni": "12345678J",
+        "phone": "",
+        "address": "Av. Madrid 58 1ºB",
+        "birth": "19-10-1996",
+        "suscp": "",
+        "card": "1234567890123456",
+        "email": "pepe.perez@gmail.com",
+        "password": "hola",
+        "suscp_card": "12345678"
+    }
+    
+]
