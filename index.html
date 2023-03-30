@@ -57,10 +57,62 @@
       </div>
     </div>
     <div class="modal-login">
-
+      <div>
+        <h1>Bienvenido</h1>
+        <div>
+          <label for="login-username">Email:</label>
+          <input type="email" name="login-username" id="login-username" />
+        </div>
+        <div>
+          <label for="login-password">Contraseña:</label>
+          <input type="password" name="login-password" id="login-password" />
+        </div>
+        <input type="button" value="Iniciar Sesión" />
+      </div>
     </div>
     <div class="modal-register">
-      
+      <h1>Nuevo Usuario</h1>
+      <div>
+        <label for="register-name">Nombre completo:</label>
+        <input type="text" name="register-name" id="register-name" />
+      </div>
+      <div>
+        <label for="register-dni">DNI:</label>
+        <input type="text" name="register-dni" id="register-dni" />
+      </div>
+      <div>
+        <label for="register-email">Email:</label>
+        <input type="email" name="register-email" id="register-email" />
+      </div>
+      <div>
+        <label for="register-birth">Fecha de nacimiento:</label>
+        <input type="date" name="register-birth" id="register-birth" />
+      </div>
+      <div>
+        <label for="register-suscp">Suscripción:</label>
+        <select name="register-suscp" id="register-suscp">
+          <option value="basic">Básico</option>
+          <option value="club" selected>Cliente Club (3.99€/mes)</option>
+          <option value="premium">Premium (5.99€/mes)</option>
+        </select>
+      </div>
+      <div>
+        <label for="register-card">Número de tarjeta:</label>
+        <input type="number" name="register-card" id="register-card" />
+      </div>
+      <div>
+        <label for="login-password">Contraseña:</label>
+        <input type="password" name="login-password" id="login-password" />
+      </div>
+      <div>
+        <label for="login-repeat-password">Repita la contraseña:</label>
+        <input
+          type="password"
+          name="login-repeat-password"
+          id="login-repeat-password"
+        />
+      </div>
+      <input type="button" value="Crear cuenta" />
     </div>
   </body>
 </html>
