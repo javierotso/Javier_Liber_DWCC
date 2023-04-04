@@ -1,0 +1,204 @@
+/*  azul: #244B70
+    transparencia:94% */
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Cabecera */
+header {
+    background-color: #244B70;
+    display: flex;
+    justify-content: space-between;
+    color: #fefefe;
+    height: 70px;
+    align-items: center;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    font-size: 1.8em;
+}
+
+#logo,
+#logo img {
+    height: 100%;
+}
+
+/* Navegacion */
+#nav-menu {
+    background-color: rgba(36, 75, 112, 0.94);
+    align-self: flex-start;
+    display: flex;
+    position: relative;
+    left: -20px;
+    padding: 0 20px;
+
+}
+
+#nav-menu img {
+    height: 35px;
+    margin: 17.5px;
+}
+
+#nav {
+    margin-right: 20px;
+    height: calc(100vh - 10px);
+
+}
+
+nav h1 {
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+#nav div {
+    font-size: 1.2em;
+    margin: 25px 0;
+}
+
+#filtro-todos {
+    position: absolute;
+    bottom: 0px;
+}
+
+/* Sesion */
+#cerrar-sesion {
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(36, 75, 112, 0.94);
+    width: 300px;
+    /* comprobar como queda este tamaño con un usuario*/
+    position: fixed;
+    top: 90px;
+    right: 0px;
+}
+
+
+/* ----------------------------------------------------------------------------------- */
+/* Tienda */
+#logo-carrito,
+#carrito {
+    position: fixed;
+    right: 5vw;
+    bottom: 5vw;
+}
+
+#carrito {
+    padding: 0 4px;
+    background-color: #244B70;
+    color: #fefefe;
+    min-width: 420px;
+    text-align: center;
+}
+
+#cerrar-carrito {
+    position: relative;
+    left: calc(50% - 20px);
+}
+
+#tabla-carrito {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.2em;
+}
+
+#contenido-carrito {
+    background-color: #fefefe;
+    color: #244B70;
+}
+
+#div-total-carrito {
+    padding: 8px 15px;
+    font-size: 2em;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* ----------------------------------------------------------------------------------- */
+/* Productos */
+#div-productos,
+#div-carrousel {
+    display: flex;
+    /* Ojo como se reparten cuando cuando no es divisible entre 4 */
+    justify-content: space-evenly;
+    margin: 10px;    
+}
+#div-carrousel{
+    border: 4px solid #244B70;
+    border-radius: 3px;
+}
+#div-productos{
+    flex-wrap: wrap;
+}
+#div-productos>div, #div-carrousel>div {
+    height: 290px;
+    width: 230px;
+    margin: 18px;
+    padding: 18px;
+    border-radius: 3px;
+}
+#div-productos>div{
+    border: 4px solid #244B70;
+    color: #244B70;
+}
+#div-carrousel>div {
+    background-color: #244B70;
+    color:#fefefe;
+}
+
+/* ----------------------------------------------------------------------------------- */
+/* Modales */
+.modal-login {
+    display: none;
+}
+
+.modal-register {
+    display: none;
+}
+
+/* .modal-login,
+.modal-register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(36, 75, 112, 0.94);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.modal-login>div,
+.modal-register>div {
+    text-align: center;
+    background-color: #fefefe;
+    color: #244B70;
+    padding: 75px 50px;
+    border-radius: 3px;
+} */
+
+
+
+
+/* ----------------------------------------------------------------------------------- */
+/* OCULTAR */
+/* Navegacion */
+nav {
+    display: none;
+}
+
+/* Cerrar Sesion */
+#cerrar-sesion {
+    display: none;
+}
+
+/* Tienda */
+#carrito {
+    display: none;
+}

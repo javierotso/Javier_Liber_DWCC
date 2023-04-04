@@ -1,77 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <header>
-      <div id="nav-menu">
-        <nav id="nav">
-          <h1>Categorías</h1>
-          <div id="filtro-perfumeria">Perfumería</div>
-          <div id="filtro-cosmetica">Cosmética</div>
-          <div id="filtro-maquillaje">Maquillaje</div>
-          <div id="filtro-higiene">Higiene</div>
-          <div id="filtro-cabello">Cabello</div>
-          <div id="filtro-todos">Ver todo</div>
-        </nav>
-        <img src="" alt="" />
-      </div>
-      <div id="logo">
-        <img src="" alt="" />
-      </div>
-      <div id="user-menu">
-        <span id="user-title">Identifícate/Regístrate</span>
-        <img id="user-img" src="" alt="" />
-        <div id="cerrar-sesion">
-          <img src="" alt="" />
-          <span>Cerrar sesión</span>
-        </div>
-      </div>
-    </header>
-    <main>
-      <div id="div-carrousel"></div>
-      <div id="div-productos"></div>
-    </main>
-    <div id="div-carrito">
-      <img id="logo-carrito" src="" alt="" />
-      <div id="carrito">
-        <img id="cerrar-carrito" src="" alt="" />
-        <table id="tabla-carrito">
-          <thead>
-            <tr>
-              <th>Producto</th>
-              <th>Cantidad</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody id="contenido-carrito"></tbody>
-        </table>
-        <div id="div-total-carrito">
-          <span>Total:</span>
-          <span id="total-carrito">0.00€</span>
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfumería Liber & Javier</title>
+  <!-- Estilo letra -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap"
+    rel="stylesheet">
+
+  <!-- Añadir css -->
+  <link rel="stylesheet" href="style/style.css">
+
+</head>
+
+<body>
+  <header>
+    <div id="nav-menu">
+      <nav id="nav">
+        <h1>Categorías</h1>
+        <div id="filtro-perfumeria">Perfumería</div>
+        <div id="filtro-cosmetica">Cosmética</div>
+        <div id="filtro-maquillaje">Maquillaje</div>
+        <div id="filtro-higiene">Higiene</div>
+        <div id="filtro-cabello">Cabello</div>
+        <div id="filtro-todos">Ver todo</div>
+      </nav>
+      <img src="Prototipo/img/menu35x35.png" alt="" />
+    </div>
+    <div id="logo">
+      <img src="Prototipo/img/logo150.png" alt="" />
+    </div>
+    <div id="user-menu">
+      <span id="user-title">Identifícate/Regístrate</span>
+      <img id="user-img" src="" alt="" />
+      <div id="cerrar-sesion">
+        <img src="Prototipo/img/icono-cerrar.png" alt="" />
+        <span>Cerrar sesión</span>
       </div>
     </div>
-    <div class="modal-login">
+  </header>
+  <main>
+    <div id="div-carrousel"></div>
+    <div id="div-productos"></div>
+  </main>
+  <div id="div-carrito">
+    <img id="logo-carrito" src="Prototipo/img/icono-carro75x75.png" alt="" />
+    <div id="carrito">
+      <img id="cerrar-carrito" src="Prototipo/img/cerrar-carrito30.png" alt="" />
+      <table id="tabla-carrito">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="contenido-carrito"></tbody>
+      </table>
+      <div id="div-total-carrito">
+        <span>Total:</span>
+        <span id="total-carrito">0.00€</span>
+      </div>
+    </div>
+  </div>
+  <div class="modal-login">
+    <div>
+      <h1>Bienvenido</h1>
       <div>
-        <h1>Bienvenido</h1>
-        <div>
-          <label for="login-username">Email:</label>
-          <input type="email" name="login-username" id="login-username" />
-        </div>
-        <div>
-          <label for="login-password">Contraseña:</label>
-          <input type="password" name="login-password" id="login-password" />
-        </div>
-        <input type="button" value="Iniciar Sesión" />
+        <label for="login-username">Email:</label>
+        <input type="email" name="login-username" id="login-username" />
       </div>
+      <div>
+        <label for="login-password">Contraseña:</label>
+        <input type="password" name="login-password" id="login-password" />
+      </div>
+      <input type="button" value="Iniciar Sesión" />
     </div>
-    <div class="modal-register">
-      <h1>Nuevo Usuario</h1>
+  </div>
+  <div class="modal-register">
+    <div>
+      <h1>Nuevo Usuario </h1>
+      <hr><br><br> <!--Prueba de separación del título-->
       <div>
         <label for="register-name">Nombre completo:</label>
         <input type="text" name="register-name" id="register-name" />
@@ -114,13 +128,11 @@
       </div>
       <div>
         <label for="login-repeat-password">Repita la contraseña:</label>
-        <input
-          type="password"
-          name="login-repeat-password"
-          id="login-repeat-password"
-        />
+        <input type="password" name="login-repeat-password" id="login-repeat-password" />
       </div>
       <input type="button" value="Crear cuenta" />
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
