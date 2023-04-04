@@ -30,13 +30,14 @@ header {
     background-color: rgba(36, 75, 112, 0.94);
     align-self: flex-start;
     display: flex;
+    flex-direction: row-reverse;
     position: relative;
     left: -20px;
     padding: 0 20px;
 
 }
 
-#nav-menu img {
+#img-menu {
     height: 35px;
     margin: 17.5px;
 }
@@ -118,6 +119,16 @@ nav h1 {
     justify-content: space-between;
 }
 
+#comprar{
+    background-color: #fefefe;
+    color: #244B70;
+    border: 0;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 95%;
+    font-weight: bolder;
+}
 
 /* ----------------------------------------------------------------------------------- */
 /* Productos */
@@ -153,15 +164,8 @@ nav h1 {
 
 /* ----------------------------------------------------------------------------------- */
 /* Modales */
-.modal-login {
-    display: none;
-}
 
-.modal-register {
-    display: none;
-}
-
-/* .modal-login,
+.modal-login,
 .modal-register {
     display: flex;
     justify-content: center;
@@ -179,26 +183,51 @@ nav h1 {
     text-align: center;
     background-color: #fefefe;
     color: #244B70;
-    padding: 75px 50px;
+    padding: 35px 50px;
     border-radius: 3px;
-} */
+}
 
+.close-modal{
+    position: relative; 
+    left: 50%;
+}
 
+.modal-login h1,
+.modal-register h1{
+    margin-top: 0;
+}
+
+#iniciar, #crear{
+    margin-top: 35px;
+    background-color: #244B70;
+    color:#fefefe;
+    border: 0;
+    border-radius: 3px;
+    padding: 10px;
+}
 
 
 /* ----------------------------------------------------------------------------------- */
 /* OCULTAR */
 /* Navegacion */
-nav {
+/* nav {
     display: none;
-}
+} */
 
 /* Cerrar Sesion */
-#cerrar-sesion {
+/* #cerrar-sesion {
     display: none;
-}
+} */
 
 /* Tienda */
-#carrito {
+/* #carrito {
     display: none;
-}
+} */
+
+/* Modales */
+/* .modal-login {
+    display: none;
+} */
+/* .modal-register {
+    display: none;
+} */

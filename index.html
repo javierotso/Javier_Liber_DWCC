@@ -16,12 +16,19 @@
   <!-- Añadir css -->
   <link rel="stylesheet" href="style/style.css">
 
+  <!-- Añadir script -->
+  <script src="js/class/cliente.js"></script>
+  <script src="js/class/pedido.js"></script>
+  <script src="js/class/producto.js"></script>
+  <script src="js/liber.js"></script>
+
 </head>
 
 <body>
   <header>
     <div id="nav-menu">
-      <nav id="nav">
+      <img id="img-menu" src="Prototipo/img/menu35x35.png" alt="" />
+      <nav id="nav" style="display: none;">
         <h1>Categorías</h1>
         <div id="filtro-perfumeria">Perfumería</div>
         <div id="filtro-cosmetica">Cosmética</div>
@@ -30,7 +37,6 @@
         <div id="filtro-cabello">Cabello</div>
         <div id="filtro-todos">Ver todo</div>
       </nav>
-      <img src="Prototipo/img/menu35x35.png" alt="" />
     </div>
     <div id="logo">
       <img src="Prototipo/img/logo150.png" alt="" />
@@ -38,7 +44,7 @@
     <div id="user-menu">
       <span id="user-title">Identifícate/Regístrate</span>
       <img id="user-img" src="" alt="" />
-      <div id="cerrar-sesion">
+      <div id="cerrar-sesion" style="display: none;">
         <img src="Prototipo/img/icono-cerrar.png" alt="" />
         <span>Cerrar sesión</span>
       </div>
@@ -50,9 +56,9 @@
   </main>
   <div id="div-carrito">
     <img id="logo-carrito" src="Prototipo/img/icono-carro75x75.png" alt="" />
-    <div id="carrito">
-      <img id="cerrar-carrito" src="Prototipo/img/cerrar-carrito30.png" alt="" />
+    <div id="carrito" style="display: none;">
       <table id="tabla-carrito">
+        <img id="cerrar-carrito" src="Prototipo/img/cerrar-carrito30.png" alt="" />
         <thead>
           <tr>
             <th>Producto</th>
@@ -60,31 +66,40 @@
             <th>Total</th>
           </tr>
         </thead>
-        <tbody id="contenido-carrito"></tbody>
+        <tbody id="contenido-carrito">
+          <tr id="empty">
+            <td colspan="3">No existen productos que mostrar</td>
+          </tr>       
+        </tbody>
       </table>
       <div id="div-total-carrito">
         <span>Total:</span>
         <span id="total-carrito">0.00€</span>
       </div>
+      <input id="comprar" type="button" value="Comprar" />
     </div>
   </div>
-  <div class="modal-login">
-    <div>
+  <div class="modal-login" style="display: none;">
+    <div>      
+      <img class="close-modal" src="Prototipo/img/icono-cerrar-azul15x15.png" alt="" />
       <h1>Bienvenido</h1>
+      <hr><br><br> <!--Prueba de separación del título-->
       <div>
         <label for="login-username">Email:</label>
         <input type="email" name="login-username" id="login-username" />
       </div>
       <div>
-        <label for="login-password">Contraseña:</label>
-        <input type="password" name="login-password" id="login-password" />
+        <label for="user-password">Contraseña:</label>
+        <input type="password" name="user-password" id="user-password" />
       </div>
-      <input type="button" value="Iniciar Sesión" />
+      <input id="iniciar" type="button" value="Iniciar Sesión" />
     </div>
   </div>
-  <div class="modal-register">
+  <div class="modal-register" style="display: none;">
     <div>
+      <img class="close-modal" src="Prototipo/img/icono-cerrar-azul15x15.png" alt="" />
       <h1>Nuevo Usuario </h1>
+      <p id="singIn">¿Ya tienes una cuenta?</p>
       <hr><br><br> <!--Prueba de separación del título-->
       <div>
         <label for="register-name">Nombre completo:</label>
@@ -130,7 +145,7 @@
         <label for="login-repeat-password">Repita la contraseña:</label>
         <input type="password" name="login-repeat-password" id="login-repeat-password" />
       </div>
-      <input type="button" value="Crear cuenta" />
+      <input id="crear" type="button" value="Crear cuenta" />
     </div>
   </div>
 </body>
