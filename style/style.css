@@ -1,9 +1,19 @@
 /*  azul: #244B70
+    verde: #247037
+    rojo: #C82424
     transparencia:94% */
 body {
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     margin: 0;
+}
+input{
+    border: 1px solid #244B70;
+}
+input[type="button"]{
+    border: 0;
+    border-radius: 3px;
+    padding: 10px;
 }
 
 /* Cabecera */
@@ -17,13 +27,19 @@ header {
     padding: 10px 20px;
     position: sticky;
     top: 0;
-    font-size: 1.8em;
+    font-size: 1.3em;
 }
 
 #logo,
 #logo img {
     height: 100%;
 }
+
+#user-menu{
+    display: flex;
+    align-items: center;
+}
+
 
 /* Navegacion */
 #nav-menu {
@@ -34,7 +50,7 @@ header {
     position: relative;
     left: -20px;
     padding: 0 20px;
-
+    font-weight: lighter;
 }
 
 #img-menu {
@@ -54,7 +70,7 @@ nav h1 {
 }
 
 #nav div {
-    font-size: 1.2em;
+    font-size: 1.2em;    
     margin: 25px 0;
 }
 
@@ -118,16 +134,25 @@ nav h1 {
     display: flex;
     justify-content: space-between;
 }
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
 
-#comprar{
+}
+
+#comprar, #borrar{
     background-color: #fefefe;
     color: #244B70;
     border: 0;
     border-radius: 3px;
     padding: 10px;
     margin-bottom: 15px;
-    width: 95%;
+    width: 48%;
     font-weight: bolder;
+}
+
+td, th{
+    padding: 0 10px;
 }
 
 /* ----------------------------------------------------------------------------------- */
@@ -161,6 +186,26 @@ nav h1 {
     background-color: #244B70;
     color:#fefefe;
 }
+#div-carrousel .addBag{
+    background-color: #fefefe;
+    color: #244B70;
+}
+#div-productos .addBag{
+    background-color: #244B70;
+    color: #fefefe;
+}
+
+.card{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.addBag:hover{
+    /* añadir estilo */
+}
+
 
 /* ----------------------------------------------------------------------------------- */
 /* Modales */
@@ -176,6 +221,7 @@ nav h1 {
     left: 0;
     height: 100vh;
     width: 100vw;
+    font-weight: lighter;
 }
 
 .modal-login>div,
@@ -183,8 +229,14 @@ nav h1 {
     text-align: center;
     background-color: #fefefe;
     color: #244B70;
-    padding: 35px 50px;
+    padding: 35px;
     border-radius: 3px;
+}
+.form{
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+
 }
 
 .close-modal{
@@ -201,9 +253,6 @@ nav h1 {
     margin-top: 35px;
     background-color: #244B70;
     color:#fefefe;
-    border: 0;
-    border-radius: 3px;
-    padding: 10px;
 }
 
 

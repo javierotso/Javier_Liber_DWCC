@@ -1,0 +1,42 @@
+[
+    {
+        "id": 0, 
+        "name": "Eau de parfum de mujer 200ml", 
+        "filter": "perfumeria",
+        "path": "", 
+        "price": 50.40,
+        "discount": false
+    },
+    {
+        "id": 1, 
+        "name": "Agua de colonia en bruma 150ml", 
+        "filter": "perfumeria",
+        "path": "", 
+        "price": 15.90,
+        "discount": true
+    },
+    {
+        "id": 2, 
+        "name": "Colonia concentrada 30ml", 
+        "filter": "perfumeria",
+        "path": "", 
+        "price": 20.75,
+        "discount": false
+    },
+    {
+        "id": 3, 
+        "name": "Eau de parfum de man 150ml", 
+        "filter": "perfumeria",
+        "path": "", 
+        "price": 45.25,
+        "discount": true
+    },
+    {
+        "id": 4, 
+        "name": "Champú cabello graso olor lima 00ml", 
+        "filter": "cabello",
+        "path": "", 
+        "price": 5.20,
+        "discount": false
+    }
+]
