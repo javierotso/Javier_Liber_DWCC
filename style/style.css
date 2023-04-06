@@ -154,7 +154,25 @@ nav h1 {
 td, th{
     padding: 0 10px;
 }
+.count{
+    text-align: center;
+    color: #244B70;
+    background-color: #fefefe;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.count>p{
+    width: 100%;
+    margin: 0;
+}
+.count input{
+    background-color: #fefefe;
+    color: #244B70;
+    padding: 0;
+    font-size: 1.2em;
 
+}
 /* ----------------------------------------------------------------------------------- */
 /* Productos */
 #div-productos,
