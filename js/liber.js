@@ -299,33 +299,33 @@ function listBag(array) {
  * Función que borra la tabla del carro.
  */
 function clearBag() {
-    // //No se por queno funciona =( =(
-    // let clearChild = document.getElementsByClassName("list");
-    // console.log("limpiar", clearChild);
-    // console.log("dimension:", clearChild.length);
-    // for (let i = 0; i < clearChild.length; i++) {
-    //     const element = clearChild[i];
-    //     element.parentElement.removeChild(element);
-    // }
-    // let empty = document.getElementById("empty");
-    // if (empty.style.display != "none") {
-    //     empty.setAttribute("style", "display: none;");
-    // } else {
-    //     empty.removeAttribute("style");
-    // }
+    //No se por queno funciona =( =(
+    let clearChild = document.querySelectorAll(".list");
+    console.log("limpiar", clearChild);
+    console.log("dimension:", clearChild.length);
+    for (let i = 0; i < clearChild.length; i++) {
+        const element = clearChild[i];
+        element.parentElement.removeChild(element);
+    }
+    let empty = document.getElementById("empty");
+    if (empty.style.display != "none") {
+        empty.setAttribute("style", "display: none;");
+    } else {
+        empty.removeAttribute("style");
+    }
 
-    //Al menos a machete si funciona =P       
-    // debería borrar relaciones los pedidos
-    let contenido = document.getElementById("contenido-carrito");
-    contenido.innerHTML = "";
-    let empty = document.createElement("tr");
-    empty.setAttribute("id", "empty");
-    let tdEmpty = document.createElement("td");
-    tdEmpty.setAttribute("colspan", "3");
-    tdEmpty.innerHTML = "No existen productos que mostrar";
+    // //Al menos a machete si funciona =P       
+    // // debería borrar relaciones los pedidos
+    // let contenido = document.getElementById("contenido-carrito");
+    // contenido.innerHTML = "";
+    // let empty = document.createElement("tr");
+    // empty.setAttribute("id", "empty");
+    // let tdEmpty = document.createElement("td");
+    // tdEmpty.setAttribute("colspan", "3");
+    // tdEmpty.innerHTML = "No existen productos que mostrar";
 
-    empty.appendChild(tdEmpty);
-    contenido.appendChild(empty);
+    // empty.appendChild(tdEmpty);
+    // contenido.appendChild(empty);
 }
 /**
  * Función que suma/resta unidades del producto selecionado
