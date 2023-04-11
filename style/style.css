@@ -56,6 +56,7 @@ header {
 #img-menu {
     height: 35px;
     margin: 17.5px;
+    cursor: pointer;
 }
 
 #nav {

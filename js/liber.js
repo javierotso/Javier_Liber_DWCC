@@ -48,7 +48,7 @@ window.onload = () => {
         let compra = document.getElementById("comprar");
         compra.addEventListener("click", comprar);
 
-        clienteLogeado = new Cliente(user.id, user.name, user.dni, user.phone, user.address, user.birth, user.suscp, user.card, user.email, user.password);
+        clienteLogeado = new Cliente(user.id, user.name, user.dni, user.phone, user.address, user.birth, user.suscp, user.card, user.email, user.password, user.img);
         register.removeEventListener("click", registerModal);
         helloUser(clienteLogeado);
     } else {
@@ -446,7 +446,9 @@ function helloUser(cliente) {
     let textHello = "Hola " + cliente.name;
     title.innerHTML = textHello;
     let img = document.getElementById("user-img");
-    img.setAttribute("src", cliente["img"]);
+    console.log
+    img.src = cliente["img"];
+    console.log(img);
 
     img.addEventListener("click", extend);
     seeProductbyUser(cliente.suscp);
