@@ -1,4 +1,15 @@
 'user strict'
+/* Cositas por hacer
+* La función register que ya existe acabarla (guardar el id en local)
+* Función de obterne productos con filtro.
+* Sumar el total del carrito
+* Añadir Carrusel
+* Animacion carrito
+* ** Cambiar ruta imagenes 
+* **Revisar estilos formulario
+* **Revisar entrada salida datos
+* **Revisar precio con descuento
+*/
 //constantes internas
 const timeout = 1500;
 const urlClientes = "data/clientes.json"
@@ -150,6 +161,7 @@ function seeProductbyUser(category) {
  * @param {*} sales El descuento que debe de aplicarsele al precio del producto
  */
 function createCard(array, divParent, sales) {
+    divParent.innerHTML = "";
     array.forEach(element => {
         let divProduct = document.createElement("div");
         divProduct.setAttribute("class", "card");
