@@ -25,7 +25,7 @@ window.onload = () => {
     let menu = document.getElementById("img-menu");
     menu.addEventListener("click", extend);
     /*Escucha del icono carrito*/
-    let carrito = document.getElementById("logo-carrito");
+    let carrito = document.getElementById("div-logo-carrito");
     carrito.addEventListener("click", extend);
     /*Escucha cerrar lista carrito*/
     let cerrarCarrito = document.getElementById("cerrar-carrito");
@@ -62,6 +62,11 @@ window.onload = () => {
 function extend(e) {
     /* Elemento pulsado para saber que menu desplegar */
     let element = e.target;
+    /* Esto es mejorable */
+    if(e.target.getAttribute("id") == "logo-carrito") {
+        console.log(element);
+        element = element.parentNode;
+    }
     /* Elemento "hermano" que debe mostrarse/ocultarse */
     // No tengo ni idea porque necesito moverme dos elementos para adelante pero si no no lo hace bien (coje un texto)
     let visibleNode = element.nextSibling.nextSibling;
@@ -153,6 +158,7 @@ function createCard(array, divParent, sales) {
         nameProduct.innerHTML = name;
 
         let imgProduct = document.createElement("img");
+        imgProduct.classList.add("cardImg");
         let img = element.path;
         imgProduct.setAttribute("src", img);
 
