@@ -88,7 +88,7 @@ function close(e) {
     }
 }
 /**
- * Función que muestra seleciona los productos según la supcrición del usuario;
+ * Función que muestra seleciona los productos según la suscripción del usuario;
  * @param {*} category Tipo de supcrición del usuario
  */
 function seeProductbyUser(category) {
@@ -163,7 +163,7 @@ function createCard(array, divParent, sales) {
         priceProduct.setAttribute("type", "button");
         let idProducto = element.id;
         priceProduct.setAttribute("id", idProducto);
-        priceProduct.setAttribute("class", "addBag");
+        priceProduct.setAttribute("class", "addBag clickeable");
         priceProduct.addEventListener("click", addBag);
 
         divProduct.appendChild(nameProduct);
@@ -182,7 +182,6 @@ function createCard(array, divParent, sales) {
 function comprar() {
     console.log("funcion comprar");
     let tbody = document.getElementById("contenido-carrito");
-    let child = tbody.childNodes;
 
     console.log("carro:", arrayCarrito.length)
     if (arrayCarrito.length > 0) {
@@ -264,10 +263,13 @@ function listBag(array) {
             let plus = document.createElement("input");
             plus.setAttribute("type", "button");
             plus.setAttribute("value", "+");
+            plus.classList.add("clickeable");
             // plus.addEventListener("click", changeCount);
             let less = document.createElement("input");
             less.setAttribute("type", "button");
             less.setAttribute("value", "-");
+            less.classList.add("clickeable");
+
             // less.addEventListener("click", changeCount);
 
             let tdPrice = document.createElement("td");
@@ -397,7 +399,7 @@ function login(p, element) {
         })
 }
 /**
- * Funcion para iniciar sesion
+ * Funcion para cerrar sesion
  */
 function closeSesion() {
     /* Eliminamos el usuario del localStorage */
@@ -443,6 +445,7 @@ function register(p, element) {
 function helloUser(cliente) {
     console.log("hola", cliente.img);
     let title = document.getElementById("user-title");
+    title.classList.remove("clickeable");
     let textHello = "Hola " + cliente.name;
     title.innerHTML = textHello;
     let img = document.getElementById("user-img");
