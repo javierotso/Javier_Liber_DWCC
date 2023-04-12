@@ -33,10 +33,42 @@
     },
     {
         "id": 4, 
-        "name": "Champú cabello graso olor lima 00ml", 
-        "filter": "cabello",
+        "name": "Eau de parfum Channel nº5 100ml", 
+        "filter": "perfumeria",
         "path": "img/product/product4", 
+        "price": 172.00,
+        "discount": true
+    },
+    {
+        "id": 5, 
+        "name": "Champú cabello graso olor frambuesa o cereza 300ml", 
+        "filter": "cabello",
+        "path": "img/product/product5", 
         "price": 5.20,
+        "discount": false
+    },
+    {
+        "id": 6, 
+        "name": "Serum de fortalecimiento capilar 75ml", 
+        "filter": "cabello",
+        "path": "img/product/product6", 
+        "price": 18.35,
+        "discount": true
+    },
+    {
+        "id": 7, 
+        "name": "Conjunto de acondicionador y protector capilar 75ml", 
+        "filter": "cabello",
+        "path": "img/product/product7", 
+        "price": 23.14,
+        "discount": true
+    },
+    {
+        "id": 8, 
+        "name": "Champú solido de té macha y lirios 250g", 
+        "filter": "cabello",
+        "path": "img/product/product8", 
+        "price": 31.56,
         "discount": false
     }
 ]
