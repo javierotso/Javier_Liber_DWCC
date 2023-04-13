@@ -333,28 +333,3 @@ td, th{
 .clickeable {
     cursor: pointer;
 }
-
-/* ----------------------------------------------------------------------------------- */
-/* OCULTAR */
-/* Navegacion */
-/* nav {
-    display: none;
-} */
-
-/* Cerrar Sesion */
-/* #cerrar-sesion {
-    display: none;
-} */
-
-/* Tienda */
-/* #carrito {
-    display: none;
-} */
-
-/* Modales */
-/* .modal-login {
-    display: none;
-} */
-/* .modal-register {
-    display: none;
-} */
