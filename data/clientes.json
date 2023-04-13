@@ -10,7 +10,7 @@
         "card": "0000000000000000",
         "email": "prueba@email.com",
         "password": "123",
-        "img": "Prototipo/img/user/user.jpg",
+        "img": "img/user/userF.jpg",
         "suscp_card": "00000000"
     },
     {
@@ -24,7 +24,7 @@
         "card": "1234567890123456",
         "email": "pepe.perez@gmail.com",
         "password": "hola",
-        "img": "Prototipo/img/user/user.png",
+        "img": "img/user/userM.jpg",
         "suscp_card": "12345678"
     },
     {
@@ -38,7 +38,7 @@
         "card": "7894561237894561",
         "email": "antoniajimenez@yayoo.com",
         "password": "1234",
-        "img": "Prototipo/img/user/user.png",
+        "img": "img/user/userF.jpg",
         "suscp_card": "98745632"
     }
     

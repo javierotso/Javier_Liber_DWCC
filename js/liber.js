@@ -11,7 +11,7 @@
 * **Revisar precio con descuento
 */
 //constantes internas
-const timeout = 1500;
+const timeout = 600;
 const urlClientes = "data/clientes.json"
 const urlProductos = "data/productos.json"
 

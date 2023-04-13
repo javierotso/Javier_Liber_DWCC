@@ -17,7 +17,7 @@
     },
     {
         "id": 2, 
-        "name": "Colonia concentrada 30ml", 
+        "name": "concentrado de perfume de labanda 30ml", 
         "filter": "perfumeria",
         "path": "img/product/product2.jpg", 
         "price": 88.75,
@@ -105,7 +105,7 @@
     },
     {
         "id": 13, 
-        "name": "Laca de uñas semipermanente de rápido secado", 
+        "name": "Laca de uñas de rápido secado", 
         "filter": "maquillaje",
         "path": "img/product/product13.jpg", 
         "price": 23.90,
@@ -121,26 +121,26 @@
     },
     {
         "id": 15, 
-        "name": "", 
+        "name": "Gel limpiador facial purificante con Aloe Vera", 
         "filter": "cosmetic",
         "path": "img/product/product15.jpg", 
-        "price": 0.0,
+        "price": 61.80,
         "discount": false
     },
     {
         "id": 16, 
-        "name": "", 
+        "name": "Crema de noche antiarrugas con extracto de té verde ", 
         "filter": "cosmetic",
         "path": "img/product/product16.jpg", 
-        "price": 0.0,
+        "price": 108.0,
         "discount": false
     },
     {
         "id": 17, 
-        "name": "", 
+        "name": "Mascarilla limpiadora para rostro y cuello", 
         "filter": "cosmetic",
         "path": "img/product/product17.jpg", 
-        "price": 0.0,
+        "price": 62.10,
         "discount": true
     },
     {
@@ -161,15 +161,15 @@
     },
     {
         "id": 20, 
-        "name": "", 
+        "name": "Cepillo de dientes de bambu biodegradables", 
         "filter": "higiene",
         "path": "img/product/product20.jpg", 
-        "price": 0.0,
+        "price": 94.10,
         "discount": true
     },
     {
         "id": 21, 
-        "name": "", 
+        "name": "Set de esponja de lufa, cepillo y piedra pomez", 
         "filter": "higiene",
         "path": "img/product/product21.jpg", 
         "price": 0.0,
@@ -177,10 +177,10 @@
     },
     {
         "id": 22, 
-        "name": "", 
+        "name": "Jabón solido de manos fabricación tradicional", 
         "filter": "higiene",
         "path": "img/product/product22.jpg", 
-        "price": 0.0,
+        "price": 12.60,
         "discount": true
     },
     {
