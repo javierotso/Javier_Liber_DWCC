@@ -4,7 +4,7 @@
         "name": "Eau de parfum de mujer 200ml", 
         "filter": "perfumeria",
         "path": "img/product/product0", 
-        "price": 50.40,
+        "price": 75.40,
         "discount": false
     },
     {
@@ -12,7 +12,7 @@
         "name": "Agua de colonia en bruma 150ml", 
         "filter": "perfumeria",
         "path": "img/product/product1", 
-        "price": 15.90,
+        "price": 120.90,
         "discount": true
     },
     {
@@ -20,7 +20,7 @@
         "name": "Colonia concentrada 30ml", 
         "filter": "perfumeria",
         "path": "img/product/product2", 
-        "price": 20.75,
+        "price": 88.75,
         "discount": false
     },
     {
@@ -28,7 +28,7 @@
         "name": "Eau de parfum de man 150ml", 
         "filter": "perfumeria",
         "path": "img/product/product3", 
-        "price": 45.25,
+        "price": 105.25,
         "discount": true
     },
     {
@@ -44,7 +44,7 @@
         "name": "Champú cabello graso olor frambuesa o cereza 300ml", 
         "filter": "cabello",
         "path": "img/product/product5", 
-        "price": 5.20,
+        "price": 15.20,
         "discount": false
     },
     {
@@ -52,15 +52,15 @@
         "name": "Serum de fortalecimiento capilar 75ml", 
         "filter": "cabello",
         "path": "img/product/product6", 
-        "price": 18.35,
+        "price": 28.50,
         "discount": true
     },
     {
         "id": 7, 
-        "name": "Conjunto de acondicionador y protector capilar 75ml", 
+        "name": "Set viaje de acondicionador y protector capilar 100ml", 
         "filter": "cabello",
         "path": "img/product/product7", 
-        "price": 23.14,
+        "price": 53.20,
         "discount": true
     },
     {
@@ -68,7 +68,47 @@
         "name": "Champú solido de té macha y lirios 250g", 
         "filter": "cabello",
         "path": "img/product/product8", 
-        "price": 31.56,
+        "price": 31.50,
+        "discount": false
+    },
+    {
+        "id": 9, 
+        "name": "Champú anticaida y fortificante 400ml", 
+        "filter": "cabello",
+        "path": "img/product/product9", 
+        "price": 17.90,
+        "discount": false
+    },
+    {
+        "id": 10, 
+        "name": "Paleta de sombras de ojos colores fantasia", 
+        "filter": "maquillaje",
+        "path": "img/product/product10", 
+        "price": 62.95,
+        "discount": true
+    },
+    {
+        "id": 11, 
+        "name": "Set de brochas y pinceles de pelo natural", 
+        "filter": "maquillaje",
+        "path": "img/product/product11", 
+        "price": 115.90,
+        "discount": true
+    },
+    {
+        "id": 12, 
+        "name": "Barra de de labios efecto brillo", 
+        "filter": "maquillaje",
+        "path": "img/product/product12", 
+        "price": 58.99,
+        "discount": false
+    },
+    {
+        "id": 13, 
+        "name": "", 
+        "filter": "maquillaje",
+        "path": "img/product/product13", 
+        "price": 2.0,
         "discount": false
     }
 ]
