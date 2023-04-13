@@ -1,16 +1,45 @@
 [
     {
-        "id": 1,
+        "id": "C0",
+        "name": "prueba",
+        "dni": "00000000A",
+        "phone": "",
+        "address": "",
+        "birth": "01-01-2000",
+        "suscp": "club",
+        "card": "0000000000000000",
+        "email": "prueba@email.com",
+        "password": "123",
+        "img": "Prototipo/img/user/user.jpg",
+        "suscp_card": "00000000"
+    },
+    {
+        "id": "C1",
         "name": "Pepe Perez",
         "dni": "12345678J",
         "phone": "",
         "address": "Av. Madrid 58 1ºB",
         "birth": "19-10-1996",
-        "suscp": "",
+        "suscp": "club",
         "card": "1234567890123456",
         "email": "pepe.perez@gmail.com",
         "password": "hola",
+        "img": "Prototipo/img/user/user.png",
         "suscp_card": "12345678"
+    },
+    {
+        "id": "C2",
+        "name": "Antonia Jimenez",
+        "dni": "98745632W",
+        "phone": "986757471",
+        "address": "Rúa Coruña 20 2ºI",
+        "birth": "04-08-1984",
+        "suscp": "premium",
+        "card": "7894561237894561",
+        "email": "antoniajimenez@yayoo.com",
+        "password": "1234",
+        "img": "Prototipo/img/user/user.png",
+        "suscp_card": "98745632"
     }
     
 ]

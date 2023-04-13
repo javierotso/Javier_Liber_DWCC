@@ -1,0 +1,202 @@
+[
+    {
+        "id": 0, 
+        "name": "Eau de parfum de mujer 200ml", 
+        "filter": "perfumeria",
+        "path": "img/product/product0.jpg", 
+        "price": 75.40,
+        "discount": false
+    },
+    {
+        "id": 1, 
+        "name": "Agua de colonia en bruma 150ml", 
+        "filter": "perfumeria",
+        "path": "img/product/product1.jpg", 
+        "price": 120.90,
+        "discount": true
+    },
+    {
+        "id": 2, 
+        "name": "Colonia concentrada 30ml", 
+        "filter": "perfumeria",
+        "path": "img/product/product2.jpg", 
+        "price": 88.75,
+        "discount": false
+    },
+    {
+        "id": 3, 
+        "name": "Eau de parfum de man 150ml", 
+        "filter": "perfumeria",
+        "path": "img/product/product3.jpg", 
+        "price": 105.25,
+        "discount": true
+    },
+    {
+        "id": 4, 
+        "name": "Eau de parfum Channel nº5 100ml", 
+        "filter": "perfumeria",
+        "path": "img/product/product4.jpg", 
+        "price": 172.00,
+        "discount": true
+    },
+    {
+        "id": 5, 
+        "name": "Champú cabello graso olor frambuesa o cereza 300ml", 
+        "filter": "cabello",
+        "path": "img/product/product5.jpg", 
+        "price": 15.20,
+        "discount": false
+    },
+    {
+        "id": 6, 
+        "name": "Serum de fortalecimiento capilar 75ml", 
+        "filter": "cabello",
+        "path": "img/product/product6.jpg", 
+        "price": 28.50,
+        "discount": true
+    },
+    {
+        "id": 7, 
+        "name": "Set viaje de acondicionador y protector capilar 100ml", 
+        "filter": "cabello",
+        "path": "img/product/product7.jpg", 
+        "price": 53.20,
+        "discount": true
+    },
+    {
+        "id": 8, 
+        "name": "Champú solido de té macha y lirios 250g", 
+        "filter": "cabello",
+        "path": "img/product/product8.jpg", 
+        "price": 31.50,
+        "discount": false
+    },
+    {
+        "id": 9, 
+        "name": "Champú anticaida y fortificante 400ml", 
+        "filter": "cabello",
+        "path": "img/product/product9.jpg", 
+        "price": 17.90,
+        "discount": false
+    },
+    {
+        "id": 10, 
+        "name": "Paleta de sombras de ojos colores fantasia", 
+        "filter": "maquillaje",
+        "path": "img/product/product10.jpg", 
+        "price": 62.95,
+        "discount": true
+    },
+    {
+        "id": 11, 
+        "name": "Set de brochas y pinceles de pelo natural", 
+        "filter": "maquillaje",
+        "path": "img/product/product11.jpg", 
+        "price": 115.90,
+        "discount": true
+    },
+    {
+        "id": 12, 
+        "name": "Barra de de labios efecto brillo", 
+        "filter": "maquillaje",
+        "path": "img/product/product12.jpg", 
+        "price": 58.99,
+        "discount": false
+    },
+    {
+        "id": 13, 
+        "name": "Laca de uñas semipermanente de rápido secado", 
+        "filter": "maquillaje",
+        "path": "img/product/product13.jpg", 
+        "price": 23.90,
+        "discount": true
+    },
+    {
+        "id": 14, 
+        "name": "Base de maquillaje matificante de alta duración", 
+        "filter": "maquillaje",
+        "path": "img/product/product14.jpg", 
+        "price": 52.60,
+        "discount": false
+    },
+    {
+        "id": 15, 
+        "name": "", 
+        "filter": "cosmetic",
+        "path": "img/product/product15.jpg", 
+        "price": 0.0,
+        "discount": false
+    },
+    {
+        "id": 16, 
+        "name": "", 
+        "filter": "cosmetic",
+        "path": "img/product/product16.jpg", 
+        "price": 0.0,
+        "discount": false
+    },
+    {
+        "id": 17, 
+        "name": "", 
+        "filter": "cosmetic",
+        "path": "img/product/product17.jpg", 
+        "price": 0.0,
+        "discount": true
+    },
+    {
+        "id": 18, 
+        "name": "", 
+        "filter": "cosmetic",
+        "path": "img/product/product18.jpg", 
+        "price": 0.0,
+        "discount": false
+    },
+    {
+        "id": 19, 
+        "name": "", 
+        "filter": "cosmetic",
+        "path": "img/product/product19.jpg", 
+        "price": 0.0,
+        "discount": true
+    },
+    {
+        "id": 20, 
+        "name": "", 
+        "filter": "higiene",
+        "path": "img/product/product20.jpg", 
+        "price": 0.0,
+        "discount": true
+    },
+    {
+        "id": 21, 
+        "name": "", 
+        "filter": "higiene",
+        "path": "img/product/product21.jpg", 
+        "price": 0.0,
+        "discount": true
+    },
+    {
+        "id": 22, 
+        "name": "", 
+        "filter": "higiene",
+        "path": "img/product/product22.jpg", 
+        "price": 0.0,
+        "discount": true
+    },
+    {
+        "id": 23, 
+        "name": "", 
+        "filter": "higiene",
+        "path": "img/product/product23.jpg", 
+        "price": 0.0,
+        "discount": true
+    },
+    {
+        "id": 24, 
+        "name": "", 
+        "filter": "higiene",
+        "path": "img/product/product24.jpg", 
+        "price": 0.0,
+        "discount": true
+    }
+]

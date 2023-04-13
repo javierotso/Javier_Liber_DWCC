@@ -16,43 +16,52 @@
   <!-- Añadir css -->
   <link rel="stylesheet" href="style/style.css">
 
+  <!-- Añadir script -->
+  <script src="js/class/cliente.js"></script>
+  <script src="js/class/pedido.js"></script>
+  <script src="js/class/producto.js"></script>
+  <script src="js/liber.js"></script>
+
 </head>
 
 <body>
   <header>
     <div id="nav-menu">
-      <nav id="nav">
+      <img id="img-menu" class="clickeable" src="Prototipo/img/menu35x35.png" alt="" />
+      <nav id="nav" style="display: none;">
         <h1>Categorías</h1>
-        <div id="filtro-perfumeria">Perfumería</div>
-        <div id="filtro-cosmetica">Cosmética</div>
-        <div id="filtro-maquillaje">Maquillaje</div>
-        <div id="filtro-higiene">Higiene</div>
-        <div id="filtro-cabello">Cabello</div>
-        <div id="filtro-todos">Ver todo</div>
+        <div class="clickeable" id="filtro-perfumeria">Perfumería</div>
+        <div class="clickeable" id="filtro-cosmetica">Cosmética</div>
+        <div class="clickeable" id="filtro-maquillaje">Maquillaje</div>
+        <div class="clickeable" id="filtro-higiene">Higiene</div>
+        <div class="clickeable" id="filtro-cabello">Cabello</div>
+        <div class="clickeable" id="filtro-todos">Ver todo</div>
       </nav>
-      <img src="Prototipo/img/menu35x35.png" alt="" />
     </div>
     <div id="logo">
       <img src="Prototipo/img/logo150.png" alt="" />
     </div>
-    <div id="user-menu">
-      <span id="user-title">Identifícate/Regístrate</span>
-      <img id="user-img" src="" alt="" />
-      <div id="cerrar-sesion">
+    <div id="user-menu">      
+      <span id="user-title" class="clickeable">Identifícate/Regístrate</span>
+      <img id="user-img" class="clickeable" src="" alt="" height="50px"/>
+      
+      <div id="cerrar-sesion" class="clickeable" style="display: none;">
         <img src="Prototipo/img/icono-cerrar.png" alt="" />
         <span>Cerrar sesión</span>
       </div>
     </div>
   </header>
   <main>
-    <div id="div-carrousel"></div>
+    <div id="div-carrousel" style="display: none;"></div>
     <div id="div-productos"></div>
   </main>
   <div id="div-carrito">
-    <img id="logo-carrito" src="Prototipo/img/icono-carro75x75.png" alt="" />
-    <div id="carrito">
-      <img id="cerrar-carrito" src="Prototipo/img/cerrar-carrito30.png" alt="" />
+    <div id="div-logo-carrito" class="div-logo-carrito clickeable">
+      <img id="logo-carrito" src="img/icons/icono-carro75x75.png" class="clickeable" alt="" />
+    </div>
+    <div id="carrito" style="display: none;">
       <table id="tabla-carrito">
+        <div><img id="cerrar-carrito" class="clickeable" src="Prototipo/img/cerrar-carrito30.png" alt="" /></div>
         <thead>
           <tr>
             <th>Producto</th>
@@ -60,53 +69,65 @@
             <th>Total</th>
           </tr>
         </thead>
-        <tbody id="contenido-carrito"></tbody>
+        <tbody id="contenido-carrito">
+          <tr id="empty">
+            <td colspan="3">No existen productos que mostrar</td>
+          </tr>      
+        </tbody>
       </table>
       <div id="div-total-carrito">
         <span>Total:</span>
         <span id="total-carrito">0.00€</span>
       </div>
+      <div class="buttons">
+        <input id="comprar" type="button" class="clickeable" value="Comprar" />
+        <input id="borrar" type="button" class="clickeable" value="Borrar" />
+      </div>
     </div>
   </div>
-  <div class="modal-login">
-    <div>
+  <div class="modal-login" style="display: none;">
+    <div>      
+      <img class="close-modal clickeable" src="Prototipo/img/icono-cerrar-azul15x15.png" alt="" />
       <h1>Bienvenido</h1>
-      <div>
+      <hr><p id="login-ok"></p><br> <!--Prueba de separación del título-->
+      <div class="form">
         <label for="login-username">Email:</label>
         <input type="email" name="login-username" id="login-username" />
       </div>
-      <div>
-        <label for="login-password">Contraseña:</label>
-        <input type="password" name="login-password" id="login-password" />
+      <div class="form">
+        <label for="user-password">Contraseña:</label>
+        <input type="password" name="user-password" id="user-password" />
       </div>
-      <input type="button" value="Iniciar Sesión" />
+      <input id="iniciar" class="clickeable" type="button" value="Iniciar Sesión" />
     </div>
   </div>
-  <div class="modal-register">
+  <div class="modal-register" style="display: none;">
     <div>
+      <img class="close-modal clickeable" src="Prototipo/img/icono-cerrar-azul15x15.png" alt="" />
       <h1>Nuevo Usuario </h1>
-      <hr><br><br> <!--Prueba de separación del título-->
-      <div>
+      <p id="singIn" class="clickeable">¿Ya tienes una cuenta?</p>
+      <hr><p id="register-ok"></p> <br><!--Prueba de separación del título--> 
+      <div class="form">
         <label for="register-name">Nombre completo:</label>
         <input type="text" name="register-name" id="register-name" />
       </div>
-      <div>
+      <div class="form">
         <label for="register-dni">DNI:</label>
         <input type="text" name="register-dni" id="register-dni" />
       </div>
-      <div>
+      <div class="form">
         <label for="register-phone">Teléfono:</label>
         <input type="text" name="register-phone" id="register-phone" />
       </div>
-      <div>
+      <div class="form">
         <label for="register-address">Dirección:</label>
         <input type="text" name="register-address" id="register-address" />
       </div>
-      <div>
+      <div class="form">
         <label for="register-birth">Fecha de nacimiento:</label>
         <input type="date" name="register-birth" id="register-birth" />
       </div>
-      <div>
+      <div class="form">
         <label for="register-suscp">Suscripción:</label>
         <select name="register-suscp" id="register-suscp">
           <option value="basic">Básico</option>
@@ -114,23 +135,23 @@
           <option value="premium">Premium (5.99€/mes)</option>
         </select>
       </div>
-      <div>
+      <div class="form">
         <label for="register-card">Número de tarjeta:</label>
         <input type="number" name="register-card" id="register-card" />
       </div>
-      <div>
+      <div class="form">
         <label for="register-email">Email:</label>
         <input type="email" name="register-email" id="register-email" />
       </div>
-      <div>
+      <div class="form">
         <label for="login-password">Contraseña:</label>
         <input type="password" name="login-password" id="login-password" />
       </div>
-      <div>
+      <div class="form">
         <label for="login-repeat-password">Repita la contraseña:</label>
         <input type="password" name="login-repeat-password" id="login-repeat-password" />
       </div>
-      <input type="button" value="Crear cuenta" />
+      <input id="crear"  class="clickeable" type="button" value="Crear cuenta" />
     </div>
   </div>
 </body>

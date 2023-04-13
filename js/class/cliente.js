@@ -1,7 +1,7 @@
 class Cliente {
-    constructor(id, mane, dni, phone, address, birth, suscp, card, email, password){
+    constructor(id, name, dni, phone, address, birth, suscp, card, email, password, img){
         this.id = id;
-        this.name = mane;
+        this.name = name;
         this.dni = dni; 
         this.phone = phone;
         this.address = address;
@@ -10,7 +10,8 @@ class Cliente {
         this.card = card;
         this.email = email;
         this.password = password;
-        this.suscp_card = this.generatenerateCardNumber(dni);
+        this.img = img;
+        this.suscp_card = this.generateCardNumber(dni);
     }
 
     //Genera un número de tarjeta de fidelización a partir del dni, quitenado las letras.  
