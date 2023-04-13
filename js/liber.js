@@ -1,4 +1,15 @@
 'user strict'
+/* Cositas por hacer
+* La función register que ya existe acabarla (guardar el id en local)
+* Función de obterne productos con filtro.
+* Sumar el total del carrito
+* Añadir Carrusel
+* Animacion carrito
+* ** Cambiar ruta imagenes 
+* **Revisar estilos formulario
+* **Revisar entrada salida datos
+* **Revisar precio con descuento
+*/
 //constantes internas
 const timeout = 1500;
 const urlClientes = "data/clientes.json"
@@ -25,7 +36,7 @@ window.onload = () => {
     let menu = document.getElementById("img-menu");
     menu.addEventListener("click", extend);
     /*Escucha del icono carrito*/
-    let carrito = document.getElementById("logo-carrito");
+    let carrito = document.getElementById("div-logo-carrito");
     carrito.addEventListener("click", extend);
     /*Escucha cerrar lista carrito*/
     let cerrarCarrito = document.getElementById("cerrar-carrito");
@@ -48,7 +59,7 @@ window.onload = () => {
         let compra = document.getElementById("comprar");
         compra.addEventListener("click", comprar);
 
-        clienteLogeado = new Cliente(user.id, user.name, user.dni, user.phone, user.address, user.birth, user.suscp, user.card, user.email, user.password);
+        clienteLogeado = new Cliente(user.id, user.name, user.dni, user.phone, user.address, user.birth, user.suscp, user.card, user.email, user.password, user.img);
         register.removeEventListener("click", registerModal);
         helloUser(clienteLogeado);
     } else {
@@ -62,6 +73,11 @@ window.onload = () => {
 function extend(e) {
     /* Elemento pulsado para saber que menu desplegar */
     let element = e.target;
+    /* Esto es mejorable */
+    if(e.target.getAttribute("id") == "logo-carrito") {
+        console.log(element);
+        element = element.parentNode;
+    }
     /* Elemento "hermano" que debe mostrarse/ocultarse */
     // No tengo ni idea porque necesito moverme dos elementos para adelante pero si no no lo hace bien (coje un texto)
     let visibleNode = element.nextSibling.nextSibling;
@@ -88,7 +104,7 @@ function close(e) {
     }
 }
 /**
- * Función que muestra seleciona los productos según la supcrición del usuario;
+ * Función que muestra seleciona los productos según la suscripción del usuario;
  * @param {*} category Tipo de supcrición del usuario
  */
 function seeProductbyUser(category) {
@@ -145,6 +161,7 @@ function seeProductbyUser(category) {
  * @param {*} sales El descuento que debe de aplicarsele al precio del producto
  */
 function createCard(array, divParent, sales) {
+    divParent.innerHTML = "";
     array.forEach(element => {
         let divProduct = document.createElement("div");
         divProduct.setAttribute("class", "card");
@@ -153,6 +170,7 @@ function createCard(array, divParent, sales) {
         nameProduct.innerHTML = name;
 
         let imgProduct = document.createElement("img");
+        imgProduct.classList.add("cardImg");
         let img = element.path;
         imgProduct.setAttribute("src", img);
 
@@ -163,7 +181,7 @@ function createCard(array, divParent, sales) {
         priceProduct.setAttribute("type", "button");
         let idProducto = element.id;
         priceProduct.setAttribute("id", idProducto);
-        priceProduct.setAttribute("class", "addBag");
+        priceProduct.setAttribute("class", "addBag clickeable");
         priceProduct.addEventListener("click", addBag);
 
         divProduct.appendChild(nameProduct);
@@ -182,7 +200,6 @@ function createCard(array, divParent, sales) {
 function comprar() {
     console.log("funcion comprar");
     let tbody = document.getElementById("contenido-carrito");
-    let child = tbody.childNodes;
 
     console.log("carro:", arrayCarrito.length)
     if (arrayCarrito.length > 0) {
@@ -264,10 +281,13 @@ function listBag(array) {
             let plus = document.createElement("input");
             plus.setAttribute("type", "button");
             plus.setAttribute("value", "+");
+            plus.classList.add("clickeable");
             // plus.addEventListener("click", changeCount);
             let less = document.createElement("input");
             less.setAttribute("type", "button");
             less.setAttribute("value", "-");
+            less.classList.add("clickeable");
+
             // less.addEventListener("click", changeCount);
 
             let tdPrice = document.createElement("td");
@@ -291,33 +311,33 @@ function listBag(array) {
  * Función que borra la tabla del carro.
  */
 function clearBag() {
-    // //No se por queno funciona =( =(
-    // let clearChild = document.getElementsByClassName("list");
-    // console.log("limpiar", clearChild);
-    // console.log("dimension:", clearChild.length);
-    // for (let i = 0; i < clearChild.length; i++) {
-    //     const element = clearChild[i];
-    //     element.parentElement.removeChild(element);
-    // }
-    // let empty = document.getElementById("empty");
-    // if (empty.style.display != "none") {
-    //     empty.setAttribute("style", "display: none;");
-    // } else {
-    //     empty.removeAttribute("style");
-    // }
+    //No se por queno funciona =( =(
+    let clearChild = document.querySelectorAll(".list");
+    console.log("limpiar", clearChild);
+    console.log("dimension:", clearChild.length);
+    for (let i = 0; i < clearChild.length; i++) {
+        const element = clearChild[i];
+        element.parentElement.removeChild(element);
+    }
+    let empty = document.getElementById("empty");
+    if (empty.style.display != "none") {
+        empty.setAttribute("style", "display: none;");
+    } else {
+        empty.removeAttribute("style");
+    }
 
-    //Al menos a machete si funciona =P       
-    // debería borrar relaciones los pedidos
-    let contenido = document.getElementById("contenido-carrito");
-    contenido.innerHTML = "";
-    let empty = document.createElement("tr");
-    empty.setAttribute("id", "empty");
-    let tdEmpty = document.createElement("td");
-    tdEmpty.setAttribute("colspan", "3");
-    tdEmpty.innerHTML = "No existen productos que mostrar";
+    // //Al menos a machete si funciona =P       
+    // // debería borrar relaciones los pedidos
+    // let contenido = document.getElementById("contenido-carrito");
+    // contenido.innerHTML = "";
+    // let empty = document.createElement("tr");
+    // empty.setAttribute("id", "empty");
+    // let tdEmpty = document.createElement("td");
+    // tdEmpty.setAttribute("colspan", "3");
+    // tdEmpty.innerHTML = "No existen productos que mostrar";
 
-    empty.appendChild(tdEmpty);
-    contenido.appendChild(empty);
+    // empty.appendChild(tdEmpty);
+    // contenido.appendChild(empty);
 }
 /**
  * Función que suma/resta unidades del producto selecionado
@@ -397,7 +417,7 @@ function login(p, element) {
         })
 }
 /**
- * Funcion para iniciar sesion
+ * Funcion para cerrar sesion
  */
 function closeSesion() {
     /* Eliminamos el usuario del localStorage */
@@ -443,10 +463,13 @@ function register(p, element) {
 function helloUser(cliente) {
     console.log("hola", cliente.img);
     let title = document.getElementById("user-title");
+    title.classList.remove("clickeable");
     let textHello = "Hola " + cliente.name;
     title.innerHTML = textHello;
     let img = document.getElementById("user-img");
-    img.setAttribute("src", cliente["img"]);
+    console.log
+    img.src = cliente["img"];
+    console.log(img);
 
     img.addEventListener("click", extend);
     seeProductbyUser(cliente.suscp);

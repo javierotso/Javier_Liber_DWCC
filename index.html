@@ -27,25 +27,25 @@
 <body>
   <header>
     <div id="nav-menu">
-      <img id="img-menu" src="Prototipo/img/menu35x35.png" alt="" />
+      <img id="img-menu" class="clickeable" src="img/icons/menu35x35.png" alt="" />
       <nav id="nav" style="display: none;">
         <h1>Categorías</h1>
-        <div id="filtro-perfumeria">Perfumería</div>
-        <div id="filtro-cosmetica">Cosmética</div>
-        <div id="filtro-maquillaje">Cosmética</div>
-        <div id="filtro-higiene">Higiene</div>
-        <div id="filtro-cabello">Cabello</div>
-        <div id="filtro-todos">Ver todo</div>
+        <div class="clickeable" id="filtro-perfumeria">Perfumería</div>
+        <div class="clickeable" id="filtro-cosmetica">Cosmética</div>
+        <div class="clickeable" id="filtro-maquillaje">Cosmética</div>
+        <div class="clickeable" id="filtro-higiene">Higiene</div>
+        <div class="clickeable" id="filtro-cabello">Cabello</div>
+        <div class="clickeable" id="filtro-todos">Ver todo</div>
       </nav>
     </div>
     <div id="logo">
-      <img src="Prototipo/img/logo150.png" alt="" />
+      <img src="img/icons/logo150.png" alt="" />
     </div>
     <div id="user-menu">      
-      <span id="user-title">Identifícate/Regístrate</span>
-      <img id="user-img" src="" alt="" height="70px"/>
+      <span id="user-title" class="clickeable">Identifícate/Regístrate</span>
+      <img id="user-img" class="clickeable" src="" alt="" height="50px"/>
       
-      <div id="cerrar-sesion" style="display: none;">
+      <div id="cerrar-sesion" class="clickeable" style="display: none;">
         <img src="Prototipo/img/icono-cerrar.png" alt="" />
         <span>Cerrar sesión</span>
       </div>
@@ -56,10 +56,12 @@
     <div id="div-productos"></div>
   </main>
   <div id="div-carrito">
-    <img id="logo-carrito" src="Prototipo/img/icono-carro75x75.png" alt="" />
+    <div id="div-logo-carrito" class="div-logo-carrito clickeable">
+      <img id="logo-carrito" src="img/icons/icono-carro75x75.png" class="clickeable" alt="" />
+    </div>
     <div id="carrito" style="display: none;">
       <table id="tabla-carrito">
-        <div><img id="cerrar-carrito" src="Prototipo/img/cerrar-carrito30.png" alt="" /></div>
+        <div><img id="cerrar-carrito" class="clickeable" src="Prototipo/img/cerrar-carrito30.png" alt="" /></div>
         <thead>
           <tr>
             <th>Producto</th>
@@ -78,14 +80,14 @@
         <span id="total-carrito">0.00€</span>
       </div>
       <div class="buttons">
-        <input id="comprar" type="button" value="Comprar" />
-        <input id="borrar" type="button" value="borrar" />
+        <input id="comprar" type="button" class="clickeable" value="Comprar" />
+        <input id="borrar" type="button" class="clickeable" value="Borrar" />
       </div>
     </div>
   </div>
   <div class="modal-login" style="display: none;">
     <div>      
-      <img class="close-modal" src="Prototipo/img/icono-cerrar-azul15x15.png" alt="" />
+      <img class="close-modal clickeable" src="Prototipo/img/icono-cerrar-azul15x15.png" alt="" />
       <h1>Bienvenido</h1>
       <hr><p id="login-ok"></p><br> <!--Prueba de separación del título-->
       <div class="form">
@@ -96,14 +98,14 @@
         <label for="user-password">Contraseña:</label>
         <input type="password" name="user-password" id="user-password" />
       </div>
-      <input id="iniciar" type="button" value="Iniciar Sesión" />
+      <input id="iniciar" class="clickeable" type="button" value="Iniciar Sesión" />
     </div>
   </div>
   <div class="modal-register" style="display: none;">
     <div>
-      <img class="close-modal" src="Prototipo/img/icono-cerrar-azul15x15.png" alt="" />
+      <img class="close-modal clickeable" src="Prototipo/img/icono-cerrar-azul15x15.png" alt="" />
       <h1>Nuevo Usuario </h1>
-      <p id="singIn">¿Ya tienes una cuenta?</p>
+      <p id="singIn" class="clickeable">¿Ya tienes una cuenta?</p>
       <hr><p id="register-ok"></p> <br><!--Prueba de separación del título--> 
       <div class="form">
         <label for="register-name">Nombre completo:</label>
@@ -149,7 +151,7 @@
         <label for="login-repeat-password">Repita la contraseña:</label>
         <input type="password" name="login-repeat-password" id="login-repeat-password" />
       </div>
-      <input id="crear" type="button" value="Crear cuenta" />
+      <input id="crear"  class="clickeable" type="button" value="Crear cuenta" />
     </div>
   </div>
 </body>

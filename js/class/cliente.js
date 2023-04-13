@@ -1,5 +1,5 @@
 class Cliente {
-    constructor(id, name, dni, phone, address, birth, suscp, card, email, password){
+    constructor(id, name, dni, phone, address, birth, suscp, card, email, password, img){
         this.id = id;
         this.name = name;
         this.dni = dni; 
@@ -10,7 +10,7 @@ class Cliente {
         this.card = card;
         this.email = email;
         this.password = password;
-        this.img = "Prototipo/img/user.png";
+        this.img = img;
         this.suscp_card = this.generateCardNumber(dni);
     }
 
