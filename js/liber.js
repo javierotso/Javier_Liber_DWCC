@@ -17,7 +17,7 @@ const urlProductos = "data/productos.json"
 
 //constantes tienda
 const DISCOUNT_CLUB = 0.95;
-const DISCOUNT_PREMIUM = 0.80;
+const DISCOUNT_PREMIUM = 0.90;
 const SALES_DEFAULT = 1.00;
 
 //Variables
