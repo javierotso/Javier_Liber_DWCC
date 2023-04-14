@@ -141,23 +141,23 @@
         "filter": "cosmetic",
         "path": "img/product/product17.jpg", 
         "price": 62.10,
-        "discount": true
+        "discount": false
     },
     {
         "id": 18, 
-        "name": "", 
+        "name": "Serum para rostro efecto buena cara", 
         "filter": "cosmetic",
         "path": "img/product/product18.jpg", 
-        "price": 0.0,
+        "price": 92.75,
         "discount": false
     },
     {
         "id": 19, 
-        "name": "", 
+        "name": "Crema de día con acido hialuronico", 
         "filter": "cosmetic",
         "path": "img/product/product19.jpg", 
-        "price": 0.0,
-        "discount": true
+        "price": 115.80,
+        "discount": false
     },
     {
         "id": 20, 
@@ -173,7 +173,7 @@
         "filter": "higiene",
         "path": "img/product/product21.jpg", 
         "price": 0.0,
-        "discount": true
+        "discount": false
     },
     {
         "id": 22, 
@@ -185,18 +185,18 @@
     },
     {
         "id": 23, 
-        "name": "", 
+        "name": "Pasta de dientes blanqueadora", 
         "filter": "higiene",
         "path": "img/product/product23.jpg", 
-        "price": 0.0,
+        "price": 14.20,
         "discount": true
     },
     {
         "id": 24, 
-        "name": "", 
+        "name": "Gel de baño experiencia spa 300ml", 
         "filter": "higiene",
         "path": "img/product/product24.jpg", 
-        "price": 0.0,
-        "discount": true
+        "price": 58.50,
+        "discount": false
     }
 ]
