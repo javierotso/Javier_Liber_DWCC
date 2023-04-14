@@ -146,9 +146,9 @@ function seeProductbyUser(category) {
                         break;
                 }
                 createCard(salesProducts, carrousel, discount);
-                createCard(moreProducts, productos, SALES_DEFAULT);
+                createCard(moreProducts, productos, discount);
             } else {
-                createCard(arrayProductos, productos, SALES_DEFAULT);
+                createCard(arrayProductos, productos, discount);
             }
 
         })

@@ -17,7 +17,7 @@
     },
     {
         "id": 2, 
-        "name": "concentrado de perfume de labanda 30ml", 
+        "name": "Concentrado de perfume de labanda 30ml", 
         "filter": "perfumeria",
         "path": "img/product/product2.jpg", 
         "price": 88.75,
@@ -172,7 +172,7 @@
         "name": "Set de esponja de lufa, cepillo y piedra pomez", 
         "filter": "higiene",
         "path": "img/product/product21.jpg", 
-        "price": 0.0,
+        "price": 53.30,
         "discount": false
     },
     {
