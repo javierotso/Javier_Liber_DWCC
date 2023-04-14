@@ -65,6 +65,7 @@ window.onload = () => {
     } else {
         seeProductbyUser(null);
     }
+    
 }
 
 /**
@@ -246,6 +247,8 @@ function addBag(e) {
     }
     /* Cada vez que se añada un producto se muestra en la lista automaticamente*/
     listBag(arrayCarrito);
+
+    seeCont();
 }
 /**
  * Función que crea la tabla del carro con los productos añadidos
@@ -554,5 +557,25 @@ function alertMessage(correct, p, message, element) {
         p.setAttribute("style", "color: #C82424");
     }
 
+}
+
+
+//----------------------------------------------------------------------------------- 
+//Animacion
+function seeCont(){
+    let contador = document.getElementById("contador");
+    let text = document.getElementById("text-contador");
+    let circle= document.getElementById("circle-contador");
+    // text.innerHTML = arrayCarrito.length;
+
+    if(arrayCarrito.length>0){
+        // const PATH = "M";
+        contador.removeAttribute("style");
+        let animation = '<animateMotion dur="6s" path="M0,0 0,-20 0,0">';
+        circle.innerHTML = animation;
+        text.innerHTML = arrayCarrito.length + animation;
+
+
+    }
 }
 

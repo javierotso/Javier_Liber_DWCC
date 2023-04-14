@@ -21,6 +21,8 @@
   <script src="js/class/pedido.js"></script>
   <script src="js/class/producto.js"></script>
   <script src="js/liber.js"></script>
+  <!-- script animacion -->
+  <!-- <script src="js/animacion.js"></script> -->
 
 </head>
 
@@ -56,6 +58,10 @@
     <div id="div-productos"></div>
   </main>
   <div id="div-carrito">
+    <svg id="contador" width="30" height="80" style="display: none">
+      <circle id="circle-contador" cx="15" cy="65" r="14" fill="#aac5db" stroke="#244B70"/>
+      <text id="text-contador" x="10" y="71" style="fill:#244B70;"></text>
+    </svg>
     <div id="div-logo-carrito" class="div-logo-carrito clickeable">
       <img id="logo-carrito" src="img/icons/icono-carro75x75.png" class="clickeable" alt="" />
     </div>

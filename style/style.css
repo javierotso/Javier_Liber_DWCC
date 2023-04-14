@@ -342,3 +342,12 @@ main{
 .clickeable {
     cursor: pointer;
 }
+
+/* ----------------------------------------------------------------------------------- */
+/* Animación */
+#contador{
+    position: fixed;
+    right: 25px;
+    bottom: 89px;
+    z-index: 4;
+}
