@@ -144,6 +144,7 @@ nav h1 {
     color: var(--blanco);
     min-width: 420px;
     text-align: center;
+    z-index: 6;
 }
 
 #cerrar-carrito {
@@ -351,3 +352,25 @@ main{
     bottom: 89px;
     z-index: 4;
 }
+
+
+.count-dot {
+    stroke-width: 25px;
+    stroke-linecap: round;
+    animation: dot-grow 2s;
+  }
+  
+  @keyframes dot-grow {
+    0% {
+      stroke-width: 0px;
+    }
+    /* 15% {
+      stroke-width: 5px;
+    }
+    20% {
+      stroke-width: 15px;
+    } */
+    100% {
+      stroke-width: 25px;
+    }
+  }

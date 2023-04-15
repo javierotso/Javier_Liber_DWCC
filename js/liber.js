@@ -43,7 +43,7 @@ window.onload = () => {
     cerrarCarrito.addEventListener("click", close);
     /*Escucha texto de registro usuario*/
     let register = document.getElementById("user-title");
-    register.addEventListener("click", registerModal);    
+    register.addEventListener("click", registerModal);
     /*Escucha la foto de usuario para cerrar sesion*/
     let cerrarSesion = document.getElementById("cerrar-sesion");
     cerrarSesion.addEventListener("click", closeSesion);
@@ -65,7 +65,7 @@ window.onload = () => {
     } else {
         seeProductbyUser(null);
     }
-    
+
 }
 
 /**
@@ -75,7 +75,7 @@ function extend(e) {
     /* Elemento pulsado para saber que menu desplegar */
     let element = e.target;
     /* Esto es mejorable */
-    if(e.target.getAttribute("id") == "logo-carrito") {
+    if (e.target.getAttribute("id") == "logo-carrito") {
         console.log(element);
         element = element.parentNode;
     }
@@ -184,6 +184,7 @@ function createCard(array, divParent, sales) {
         priceProduct.setAttribute("id", idProducto);
         priceProduct.setAttribute("class", "addBag clickeable");
         priceProduct.addEventListener("click", addBag);
+        priceProduct.addEventListener("click", movePhoto);
 
         divProduct.appendChild(nameProduct);
         divProduct.appendChild(imgProduct);
@@ -229,7 +230,7 @@ function addBag(e) {
     console.log("añadir carrito")
     let element = e.target;
     let id = element.id;
-    let product = arrayProductos[id];    
+    let product = arrayProductos[id];
     if (arrayCarrito.length > 0) {
         let repeat = false;
         for (let i = 0; i < arrayCarrito.length && !repeat; i++) {
@@ -248,7 +249,7 @@ function addBag(e) {
     /* Cada vez que se añada un producto se muestra en la lista automaticamente*/
     listBag(arrayCarrito);
 
-    seeCont();
+    seeCount();
 }
 /**
  * Función que crea la tabla del carro con los productos añadidos
@@ -488,7 +489,7 @@ function helloUser(cliente) {
  */
 function registerModal() {
     console.log("modal register");
-    /* Limpiamos las alertas previas, si las hay*/ 
+    /* Limpiamos las alertas previas, si las hay*/
     let pUser = document.getElementById("register-ok");
     pUser.removeAttribute("style");
     pUser.innerHTML = "";
@@ -562,20 +563,68 @@ function alertMessage(correct, p, message, element) {
 
 //----------------------------------------------------------------------------------- 
 //Animacion
-function seeCont(){
+/**
+ * Este método hace que el contador se agrande hasta llegar a su tamaño final y despues aparece el número
+ */
+function seeCount() {
     let contador = document.getElementById("contador");
     let text = document.getElementById("text-contador");
-    let circle= document.getElementById("circle-contador");
-    // text.innerHTML = arrayCarrito.length;
+    let line = document.getElementById("line-contador");
+    text.innerHTML = '';
+    line.removeAttribute('class');
 
-    if(arrayCarrito.length>0){
-        // const PATH = "M";
-        contador.removeAttribute("style");
-        let animation = '<animateMotion dur="6s" path="M0,0 0,-20 0,0">';
-        circle.innerHTML = animation;
-        text.innerHTML = arrayCarrito.length + animation;
+    /*Necesito el primer setTimeout para que borre la clase y lavuelva a poner y así se reactibe la animación de 'line' */
+    setTimeout(() => {
+        if (arrayCarrito.length > 0) {
+            line.setAttribute('class', 'count-dot');
+            contador.removeAttribute("style");
+            setTimeout(() => {
+                if (arrayCarrito.length > 9) {
+                    text.innerHTML = '+';
+                } else {
+                    text.innerHTML = arrayCarrito.length;
+                }
+            }, 1500);
 
+        }
+    }, 1);
+}
+/**
+ * Este método desplaza el contador hacia abajo hasta situarlo en la posicion definitiva
+ */
+//Solo funciona la primera vez
+function seeCount2() {
+    let contador = document.getElementById("contador");
+    let text = document.getElementById("text-contador");
+    // contador.setAttribute('syle', 'display: none');
+    let circle = document.getElementById("circle-contador");
+    // circle.innerHTML = '<animateMotion/>';
+    // text.innerHTML = '';
 
-    }
+    /*Necesito el primer setTimeout para que borre la clase y lavuelva a poner y así se reactibe la animación de 'line' */
+    setTimeout(() => {
+        if (arrayCarrito.length > 0) {
+            contador.removeAttribute("style");
+            let animateMotion = '<animateMotion dur="2s" path="M0,0 0,-20 z"/>';
+            let animateTransform = '<animateTransform attributeName="transform" attributeType="XML" type="scale" from="0 0" to="1 1" dur="3s"/>'
+            circle.innerHTML = animateMotion;
+            if (arrayCarrito.length > 9) {
+                text.innerHTML = '+';
+            } else {
+                text.innerHTML = arrayCarrito.length;
+            }
+
+            text.innerHTML = text.innerHTML + animateMotion;
+        }
+
+    }, 5);
+}
+
+function movePhoto(e){
+    let element = e.target;
+    let photo = element.previousSibling
+    console.log(photo);
+
+    
 }
 
