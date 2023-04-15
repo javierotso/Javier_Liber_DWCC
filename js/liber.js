@@ -29,6 +29,12 @@ let arrayClientes = [];
 let arrayProductos = [];
 let discount = SALES_DEFAULT;
 
+/*Lista de productos */
+let allProductList = [];
+allProductList["salesProduct"] = [];
+allProductList["products"] = [];
+
+
 
 
 window.onload = () => {
@@ -43,13 +49,17 @@ window.onload = () => {
     cerrarCarrito.addEventListener("click", close);
     /*Escucha texto de registro usuario*/
     let register = document.getElementById("user-title");
-    register.addEventListener("click", registerModal);    
+    register.addEventListener("click", registerModal);
     /*Escucha la foto de usuario para cerrar sesion*/
     let cerrarSesion = document.getElementById("cerrar-sesion");
     cerrarSesion.addEventListener("click", closeSesion);
     /*Escucha del boton borrar*/
     let borra = document.getElementById("borrar");
     borra.addEventListener("click", borrar);
+
+    /* Ponemos a la escucha los filtros del menú lateral */
+    const NAV = document.getElementById("nav");
+    NAV.addEventListener("click", filtrarProductosEvent);
 
     /*Comprobar que si existe un usuario logeado*/
     let user = JSON.parse(localStorage.getItem("user"));
@@ -62,9 +72,10 @@ window.onload = () => {
         clienteLogeado = new Cliente(user.id, user.name, user.dni, user.phone, user.address, user.birth, user.suscp, user.card, user.email, user.password, user.img);
         register.removeEventListener("click", registerModal);
         helloUser(clienteLogeado);
-    } else {
-        seeProductbyUser(null);
     }
+
+    /*Obtenemos los productos */
+    getProducts();
 }
 
 /**
@@ -74,7 +85,7 @@ function extend(e) {
     /* Elemento pulsado para saber que menu desplegar */
     let element = e.target;
     /* Esto es mejorable */
-    if(e.target.getAttribute("id") == "logo-carrito") {
+    if (e.target.getAttribute("id") == "logo-carrito") {
         console.log(element);
         element = element.parentNode;
     }
@@ -104,56 +115,31 @@ function close(e) {
     }
 }
 /**
- * Función que muestra seleciona los productos según la suscripción del usuario;
- * @param {*} category Tipo de supcrición del usuario
+ * 
+ * @param {*} products array con los productos a mostrar, ha de tener un key "salesProduct" (con los productos en oferta) 
+ * y otro "products" con el resto de productos.
  */
-function seeProductbyUser(category) {
-    let salesProducts = [];
-    let moreProducts = []
-    fetch(urlProductos)
-        .then(data => data.json())
-        .then(products => {
-            for (let i = 0; i < products.length; i++) {
-                let product = products[i];
-                let producto = new Producto(product.id, product.name, product.filter, product.path, product.price, product.discount);
+function showProductsByUser(products) {
+    let divProductos = document.getElementById("div-productos");
+    let divCarrousel = document.getElementById("div-carrousel");;
 
-                arrayProductos.push(producto);
-
-                if (category != null && category != "basic") {
-                    if (producto.discount) {
-                        /* Producto de rebajas para el usuario*/
-                        salesProducts.push(producto);
-                    } else {
-                        /* Producto sin rebajas para el usuario*/
-                        moreProducts.push(producto);
-                    }
-                }
-            }
-        })
-        .then(returnProductos => {
-            //No entiendo muy bien como funcionan las promesas pero si no lo hago en este then no tengo acceso al array global arrayProductos
-            let productos = document.getElementById("div-productos");
-            let carrousel = document.getElementById("div-carrousel");;
-
-            if (salesProducts.length > 0) {
-                carrousel.removeAttribute("style");
-                switch (category) {
-                    case "club":
-                        discount = DISCOUNT_CLUB;
-                        break;
-                    case "premium":
-                        discount = DISCOUNT_PREMIUM;
-                        break;
-                }
-                createCard(salesProducts, carrousel, discount);
-                createCard(moreProducts, productos, SALES_DEFAULT);
-            } else {
-                createCard(arrayProductos, productos, SALES_DEFAULT);
-            }
-
-        })
-
+    if (clienteLogeado != null && clienteLogeado.suscp != "basic") {
+        divCarrousel.removeAttribute("style");
+        switch (clienteLogeado.suscp) {
+            case "club":
+                discount = DISCOUNT_CLUB;
+                break;
+            case "premium":
+                discount = DISCOUNT_PREMIUM;
+                break;
+        }
+        createCard(products["salesProduct"], divCarrousel, discount);
+        createCard(products["products"], divProductos, SALES_DEFAULT);
+    } else {
+        createCard(products["products"], divProductos, SALES_DEFAULT);
+    }
 }
+
 /**
  * Función que crea las tarjetar de los productos
  * @param {*} array Array con los elementos de los que debe crear la tarjeta
@@ -228,7 +214,7 @@ function addBag(e) {
     console.log("añadir carrito")
     let element = e.target;
     let id = element.id;
-    let product = arrayProductos[id];    
+    let product = arrayProductos[id];
     if (arrayCarrito.length > 0) {
         let repeat = false;
         for (let i = 0; i < arrayCarrito.length && !repeat; i++) {
@@ -472,7 +458,6 @@ function helloUser(cliente) {
     console.log(img);
 
     img.addEventListener("click", extend);
-    seeProductbyUser(cliente.suscp);
 
     listBag(arrayCarrito);
 }
@@ -485,7 +470,7 @@ function helloUser(cliente) {
  */
 function registerModal() {
     console.log("modal register");
-    /* Limpiamos las alertas previas, si las hay*/ 
+    /* Limpiamos las alertas previas, si las hay*/
     let pUser = document.getElementById("register-ok");
     pUser.removeAttribute("style");
     pUser.innerHTML = "";
