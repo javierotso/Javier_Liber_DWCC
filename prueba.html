@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #prueba {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      top: 0px;
+      left: 0px;
+      z-index: 4;
+    }
+    .move{
+    position: absolute;
+    width: 200vw;
+    height: 2000vh;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+  }
+  </style>
+</head>
+
+<body>
+  <!-- <svg id="prueba">
+    <defs>
+      <circle id="myCircle" cx="0" cy="0" r="50" stroke-width="3" stroke="#aac5db" />
+      <pattern id="photo" width="1" height="1">
+        <image id="photoimg" xlink:href="img/product/product2.jpg" x="-18" height="100"></image>
+      </pattern>
+    </defs>
+    <use x="100" y="150" href="#myCircle" fill="url(#photo)" stroke="#aac5db">
+      <animateTransform attributeName="transform" attributeType="XML" type="scale" from="1 1" to="0 0" dur="2s" />
+      <animateMotion dur="2s" path="M0,0 979,665" />
+    </use>
+  </svg> -->
+
+  <svg id="movePhoto" class="move">
+    <defs>
+      <circle id="myCircle" cx="0" cy="0" r="75" />
+      <pattern id="fillPhoto" width="1" height="1">
+        <image id="imgProduct" xlink:href="" x="-18" height="150"></image>
+      </pattern>
+    </defs>
+    <use id="mask" x="188" y="275" href="#myCircle" fill="url(#fillPhoto)" stroke-width="3" stroke="#244B70">
+      <animateTransform attributeName="transform" attributeType="XML" type="scale" from="1 1" to="0 0" dur="2s" />
+      <animateMotion dur="2s" path="M0,0 979,665"/>
+    </use>
+  </svg>
+
+</body>
+
+</html>

@@ -59,8 +59,8 @@
   </main>
   <div id="div-carrito">
     <svg id="contador" width="30" height="60" style="display: none">
-      <line id="line-contador" x1="15" y1="45" x2="15" y2="45" stroke="#aac5db" class="count-dot" />
-      <!-- <circle id="circle-contador" cx="15" cy="45" r="14" fill="#aac5db" stroke="#244B70"/> -->
+      <line id="line-contador" x1="15" y1="45" x2="15" y2="45" stroke="#aac5db" class="count-dot"/>
+      <circle id="circle-contador" cx="15" cy="45" r="14" fill="#aac5db" stroke="#244B70"/>
       <text id="text-contador" x="10.5" y="50" style="fill:#244B70;"></text>
     </svg>
     <div id="div-logo-carrito" class="div-logo-carrito clickeable">
@@ -161,6 +161,17 @@
       <input id="crear"  class="clickeable" type="button" value="Crear cuenta" />
     </div>
   </div>
-</body>
 
+  <!-- Animacion de imagen dentro de svg -->
+  <svg id="movePhoto" class="move" style="display: none">
+    <defs>
+      <circle id="myCircle" cx="0" cy="0" r="75"/>
+      <pattern id="fillPhoto" width="1" height="1" >
+        <image id="imgProduct" xlink:href="" x="-18" height="150"></image>
+      </pattern>
+    </defs>
+    <use id="mask" x="0" y="0" href="#myCircle" fill="url(#fillPhoto)" stroke-width="3" stroke="#244B70"/>
+  </svg>
+
+</body>
 </html>

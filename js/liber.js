@@ -29,6 +29,12 @@ let arrayClientes = [];
 let arrayProductos = [];
 let discount = SALES_DEFAULT;
 
+// Variables animacion
+let contador;
+let line;
+let circle;
+let text;
+
 
 
 window.onload = () => {
@@ -65,6 +71,12 @@ window.onload = () => {
     } else {
         seeProductbyUser(null);
     }
+
+    // Variables animacion
+    contador = document.getElementById("contador");
+    line = document.getElementById("line-contador");
+    circle = document.getElementById("circle-contador");
+    text = document.getElementById("text-contador");
 
 }
 
@@ -248,8 +260,8 @@ function addBag(e) {
     }
     /* Cada vez que se añada un producto se muestra en la lista automaticamente*/
     listBag(arrayCarrito);
+    seeDot();
 
-    seeCount();
 }
 /**
  * Función que crea la tabla del carro con los productos añadidos
@@ -563,15 +575,65 @@ function alertMessage(correct, p, message, element) {
 
 //----------------------------------------------------------------------------------- 
 //Animacion
+//Constante animacion
+const radioTotal = 14;
+const motionDot = '<animateMotion dur="2s" path="M0,0 0,-20 z"/>';
+const transformPhoto = '<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1 1" to="0 0" dur="4s"/>'
+const motionPhotoStart = '<animateMotion dur="4s" path="M0,0 '
+const motionPhotoEnd = '"/>';
+
+
+
 /**
- * Este método hace que el contador se agrande hasta llegar a su tamaño final y despues aparece el número
+ * Este método hace que el punto de contador se agrande hasta llegar a su tamaño final y despues aparece el número
  */
-function seeCount() {
-    let contador = document.getElementById("contador");
-    let text = document.getElementById("text-contador");
-    let line = document.getElementById("line-contador");
-    text.innerHTML = '';
+function seeDot() {
+    console.log('animate: seeDot');
+    //Me gusta mas que aparezca pero en ese caso no se una 'animate' en java, se anima con css.
+    if (arrayCarrito.length < 2) {
+        dropDot();
+    } else {
+        showUp();
+    }
+
+}
+/**
+ * Este método desplaza el punto de contador hacia abajo hasta situarlo en la posicion definitiva
+ */
+//Solo funciona la primera vez
+function dropDot() {
+    console.log('animate: dropDot');
     line.removeAttribute('class');
+    text.innerHTML = '';
+
+    let num;
+    if (arrayCarrito.length > 9) {
+        num = '+';
+    } else {
+        num = arrayCarrito.length;
+    }
+
+    if (arrayCarrito.length > 0) {
+        contador.removeAttribute("style");
+        circle.innerHTML = motionDot;
+        text.innerHTML = num + motionDot;
+    }
+}
+/**
+ * Este método hace que el punto de contador se agrande hasta llegar a su tamaño final y después aparece el número
+ */
+function showUp() {
+    console.log('animate: showDot');
+    circle.setAttribute('r', 0);
+    line.removeAttribute('class');
+    text.innerHTML = '';
+
+    let num;
+    if (arrayCarrito.length > 9) {
+        num = '+';
+    } else {
+        num = arrayCarrito.length;
+    }
 
     /*Necesito el primer setTimeout para que borre la clase y lavuelva a poner y así se reactibe la animación de 'line' */
     setTimeout(() => {
@@ -579,52 +641,98 @@ function seeCount() {
             line.setAttribute('class', 'count-dot');
             contador.removeAttribute("style");
             setTimeout(() => {
-                if (arrayCarrito.length > 9) {
-                    text.innerHTML = '+';
-                } else {
-                    text.innerHTML = arrayCarrito.length;
-                }
-            }, 1500);
+                text.innerHTML = num;
+                circle.setAttribute('r', radioTotal);
+            }, 450);
 
         }
     }, 1);
 }
-/**
- * Este método desplaza el contador hacia abajo hasta situarlo en la posicion definitiva
- */
-//Solo funciona la primera vez
-function seeCount2() {
-    let contador = document.getElementById("contador");
-    let text = document.getElementById("text-contador");
-    // contador.setAttribute('syle', 'display: none');
-    let circle = document.getElementById("circle-contador");
-    // circle.innerHTML = '<animateMotion/>';
-    // text.innerHTML = '';
 
-    /*Necesito el primer setTimeout para que borre la clase y lavuelva a poner y así se reactibe la animación de 'line' */
-    setTimeout(() => {
-        if (arrayCarrito.length > 0) {
-            contador.removeAttribute("style");
-            let animateMotion = '<animateMotion dur="2s" path="M0,0 0,-20 z"/>';
-            let animateTransform = '<animateTransform attributeName="transform" attributeType="XML" type="scale" from="0 0" to="1 1" dur="3s"/>'
-            circle.innerHTML = animateMotion;
-            if (arrayCarrito.length > 9) {
-                text.innerHTML = '+';
-            } else {
-                text.innerHTML = arrayCarrito.length;
-            }
-
-            text.innerHTML = text.innerHTML + animateMotion;
-        }
-
-    }, 5);
-}
-
-function movePhoto(e){
+function movePhoto(e) {
+    /*Consegimos todos los valores de la imagen para aplicarlos después a la animación */
     let element = e.target;
-    let photo = element.previousSibling
-    console.log(photo);
+    let photo = element.previousSibling;
+    let pathPhoto = photo.getAttribute('src');
+    
+    /*Consegimos tambien los valores para saber hasta donde llega a la animación */
+    let xFinal;
+    let yFinal;    
+    //Probe con las cordenadas de la imagen pero no funciona porque la imagen esta en 0,0 y después posicionada; =*(    
+    // xFinal = parseFloat(window.innerWidth) - 75;
+    // console.log(window.innerWidth);
+    // console.log(xFinal);
+    // yFinal = parseFloat(window.innerHeight) - 75;
+
+    //No funciona porque coge el tamaño de la ventana y sienpre es la misma aunque haga scroll las dimensiones de de la ventana son las mismas
+    /*let elem = document.getElementById('logo-carrito');
+    let clientRect = elem.getBoundingClientRect();
+    console.log(clientRect);
+    //Devuelve siempre
+        /*DOMRect {x: 640, y: 650, width: 45, height: 45, top: 650, …}
+        bottom: 695
+        height: 45
+        left: 640
+        right: 685
+        top: 650
+        width: 45
+        x: 640
+        y: 650
+        [[Prototype]]: DOMRect
+
+    xFinal = clientRect.x;
+    yFinal = clientRect.y;*/
 
     
+    let movePhoto = document.getElementById('movePhoto');
+    let heightSvg = heightWeb();
+    movePhoto.setAttribute('height', heightSvg);
+
+    let imgProduct = document.getElementById('imgProduct');
+    let mask = document.getElementById('mask');
+
+    setTimeout(() => {
+        movePhoto.removeAttribute('style');
+        imgProduct.setAttribute('xlink:href', pathPhoto);
+        let centro = calcularCentro(photo);
+        mask.setAttribute("x", centro['x']);
+        mask.setAttribute("y", centro['y']);
+
+        // let motionPhoto = motionPhotoStart + xFinal + ',' + yFinal+ motionPhotoEnd;
+        // mask.innerHTML = transformPhoto + motionPhoto;
+        // console.log(motionPhoto);
+
+
+        //Tenemos que volver invisible el svg para que nos deje volver a usar la web.
+        // setTimeout(() => {
+        //     movePhoto.setAttribute('style', 'display:none');
+        //     mask.innerHTML = "";
+        // }, 5000);
+    }, 1);
+}
+
+function heightWeb(){
+    /*Fijamos la altura de svg a la altura total de la web:
+    Para ello buscamos el ultimo objeto visible de la web y tomamos su coordenaday y su altura */
+    let elem = document.querySelector('#div-productos div:last-child');
+    let heightWeb = parseFloat(elem.offsetTop) + parseFloat(elem.offsetHeight);
+    return heightWeb;
+}
+
+function calcularCentro(element){
+    let centro =[];
+    let xPhoto = element.offsetLeft;
+    let yPhoto = element.offsetTop;
+    let widthPhoto = element.offsetWidth;
+    let heightPhoto = element.offsetHeight;
+
+    let xCentro = parseFloat(xPhoto + widthPhoto / 2);
+    let yCentro = parseFloat(yPhoto + heightPhoto / 2);
+
+    centro['x'] = xCentro;
+    centro['y'] = yCentro;
+
+    return centro;
+
 }
 
