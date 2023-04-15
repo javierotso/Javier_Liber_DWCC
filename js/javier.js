@@ -9,6 +9,7 @@ function filtrarProductosEvent(e) {
     let elementId = e.target.getAttribute("id");
     if (elementId !== "nav") {
         getProducts(elementId);
+        document.getElementById("nav").style.display = "none";
     }
 }
 
@@ -46,6 +47,9 @@ function getFilteredProducts(productList, filter) {
  * 
  */
 function filterProductsByUser(productList, filter) {
+    allProductList["salesProduct"] = [];
+    allProductList["products"] = [];
+
     if (clienteLogeado != null) {
         productList.forEach(product => {
             if (product.discount) {
@@ -54,17 +58,16 @@ function filterProductsByUser(productList, filter) {
                 allProductList["products"].push(product);
             }
         });
-
     } else {
-        allProductList["salesProduct"] = [];
         allProductList["products"] = productList;
     }
 
 
     /* Si no hay filtro de tipo de producto, listo, en caso contrario, hay que filtrar por categoria */
-    if (filter && filter.toLowerCase != "todos") {
+    if (filter && filter.toLowerCase() !== "todos") {
         allProductList = getFilteredProducts(allProductList, filter);
     }
+
     showProductsByUser(allProductList);
 
 }
