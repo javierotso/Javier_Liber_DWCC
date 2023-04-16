@@ -23,10 +23,10 @@ body {
     font-weight: bold;
     margin: 0;
 }
-input{
+input, div.price{
     border: 1px solid var(--azul);
 }
-input[type="button"]{
+input[type="button"], div.price {
     border: 0;
     border-radius: var(--borderRadius);
     padding: 10px;
@@ -358,11 +358,18 @@ REVISAR ESTE COLOR
     justify-content: flex-start;
     overflow: hidden;
 }
-/* 
-(209, 51%, 29%); */
 
 #carrousel {
     display: flex;
 
     margin: 0px 10px;
 }
+
+
+/*
+Botón de precio 
+*/
+div.precio {
+    font-weight: 100;
+}
+

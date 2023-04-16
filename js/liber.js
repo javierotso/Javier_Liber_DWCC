@@ -1,14 +1,14 @@
 'user strict'
 /* Cositas por hacer
 * La función register que ya existe acabarla (guardar el id en local)
-* Función de obterne productos con filtro.
+* LISTO --------------- Función de obterne productos con filtro. 
 * Sumar el total del carrito
-* Añadir Carrusel
+* LISTO --------------- Añadir Carrusel
 * Animacion carrito
 * ** Cambiar ruta imagenes 
-* **Revisar estilos formulario
-* **Revisar entrada salida datos
-* **Revisar precio con descuento
+* ** Revisar estilos formulario
+* ** Revisar entrada salida datos
+* ** Revisar precio con descuento
 */
 //constantes internas
 const timeout = 1500;
@@ -155,7 +155,7 @@ function showProductsByUser(products) {
  * @param {*} sales El descuento que debe de aplicarsele al precio del producto
  */
 function createCard(array, divParent, sales) {
-    //divParent.innerHTML = "";
+    divParent.innerHTML = "";
     array.forEach(element => {
         let divProduct = document.createElement("div");
         divProduct.setAttribute("class", "card");
@@ -168,28 +168,43 @@ function createCard(array, divParent, sales) {
         let img = element.path;
         imgProduct.setAttribute("src", img);
 
-        let priceProduct = document.createElement("input");
+
+        /*
+        He modificado esto, haciéndolo con un div para que me permita tachar parte del contenido
+        */
+        let productPrice = document.createElement("div");
+
         let price = parseFloat(element.price) * parseFloat(sales);
-        let priceText = "Precio: " + price.toFixed(2) + " €";
-        priceProduct.setAttribute("value", priceText);
-        priceProduct.setAttribute("type", "button");
         let idProducto = element.id;
-        priceProduct.setAttribute("id", idProducto);
-        priceProduct.setAttribute("class", "addBag clickeable");
-        priceProduct.addEventListener("click", addBag);
+
+        productPrice.setAttribute("id", idProducto);
+        productPrice.setAttribute("class", "addBag clickeable price");
+        productPrice.addEventListener("click", addBag);
+
+        /*
+        Cambiamos el value en caso de que estemos en el carrousel
+        */
+        let priceText = "Precio: ";
+        if (divParent.id == "div-carrousel") {
+            priceText = priceText + price.toFixed(2) + "€ <small><del>" + parseFloat(element.price).toFixed(2) + "€</del></small>";
+        } else {
+            priceText = priceText + price.toFixed(2) + "€";
+        }
+        productPrice.innerHTML = priceText;
+
         /*
         Aquí añadimos los listener para cambiar el contenido al pasar por encima
         */
-        priceProduct.addEventListener("mouseenter", () => {
-            priceProduct.value = "Añadir al carrito";
+        productPrice.addEventListener("mouseenter", () => {
+            productPrice.innerHTML = "Añadir al carrito";
         });
-        priceProduct.addEventListener("mouseleave", () => {
-            priceProduct.value = priceText;
+        productPrice.addEventListener("mouseleave", () => {
+            productPrice.innerHTML = priceText;
         });
 
         divProduct.appendChild(nameProduct);
         divProduct.appendChild(imgProduct);
-        divProduct.appendChild(priceProduct);
+        divProduct.appendChild(productPrice);
         divParent.appendChild(divProduct);
     });
 }
