@@ -344,6 +344,7 @@ td, th{
     align-items: center;
     cursor: pointer;
     margin-top: 10px;
+    display: none;
 }
 
 /*

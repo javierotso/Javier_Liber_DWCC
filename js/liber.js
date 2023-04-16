@@ -465,6 +465,10 @@ function helloUser(cliente) {
     img.src = cliente["img"];
     console.log(img);
 
+    /* Mostramos flechas de carrousel */
+    document.getElementById("moverDerecha").style.display = "flex";
+    document.getElementById("moverIzquierda").style.display = "flex";
+
     img.addEventListener("click", extend);
 
     listBag(arrayCarrito);
