@@ -2,7 +2,7 @@
 /* Cositas por hacer
 * La función register que ya existe acabarla (guardar el id en local)
 * LISTO --------------- Función de obtener productos con filtro. 
-* Sumar el total del carrito
+* LISTO --------------- Sumar el total del carrito
 * LISTO --------------- Añadir Carrusel
 * Animacion carrito
 * ** Cambiar ruta imagenes 
