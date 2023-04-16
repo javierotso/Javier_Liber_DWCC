@@ -50,7 +50,7 @@ function filterProductsByUser(productList, filter) {
     allProductList["salesProduct"] = [];
     allProductList["products"] = [];
 
-    if (clienteLogeado != null) {
+    if (clienteLogeado != null && clienteLogeado.suscp != "basic") {
         productList.forEach(product => {
             if (product.discount) {
                 allProductList["salesProduct"].push(product);
@@ -83,6 +83,7 @@ function getProducts(filter) {
             if (products.length > 0) {
                 productList = products;
             }
+            arrayProductos = products;
             /*
             Cuando tenemos todos los productos, llamamos a la función que filtrará los productos por tipo de usuario
             */
@@ -118,4 +119,19 @@ function moverCarrouselIzquierda() {
     divCarrousel.removeChild(ultimaCard);
 
     divCarrousel.insertBefore(ultimaCard, primeraCard);
+}
+
+/**
+ * Cambia el valor del total del carrito
+ */
+function totalCarrito() {
+    let carrito = document.querySelectorAll("#contenido-carrito tr.list");
+    let totalCarrito = 0;
+    carrito.forEach(tr => {
+        let id_producto = tr.getAttribute("name");
+        let totalProducto = parseFloat(document.getElementById("price-" + id_producto).innerHTML);
+        totalCarrito = totalCarrito + totalProducto;
+    });
+    let total = document.getElementById("total-carrito");
+    total.innerHTML = totalCarrito.toFixed(2) + "€"
 }

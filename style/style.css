@@ -351,7 +351,7 @@ td, th{
 REVISAR ESTE COLOR
 */
 .moverDerecha:hover, .moverIzquierda:hover {
-    background-color: rgba(211, 221, 245, 0.678);
+    background-color: var(--comprarColor);
 }
 
 #div-carrousel {

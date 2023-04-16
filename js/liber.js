@@ -1,14 +1,14 @@
 'user strict'
 /* Cositas por hacer
 * La función register que ya existe acabarla (guardar el id en local)
-* LISTO --------------- Función de obterne productos con filtro. 
+* LISTO --------------- Función de obtener productos con filtro. 
 * Sumar el total del carrito
 * LISTO --------------- Añadir Carrusel
 * Animacion carrito
 * ** Cambiar ruta imagenes 
 * ** Revisar estilos formulario
 * ** Revisar entrada salida datos
-* ** Revisar precio con descuento
+* LISTO --------------- ** Revisar precio con descuento
 */
 //constantes internas
 const timeout = 1500;
@@ -248,6 +248,9 @@ function addBag(e) {
     let element = e.target;
     let id = element.id;
     let product = arrayProductos[id];
+
+    let totalBag = document.getElementById("total-carrito");
+
     if (arrayCarrito.length > 0) {
         let repeat = false;
         for (let i = 0; i < arrayCarrito.length && !repeat; i++) {
@@ -263,8 +266,11 @@ function addBag(e) {
     } else {
         arrayCarrito.push(product);
     }
+
     /* Cada vez que se añada un producto se muestra en la lista automaticamente*/
     listBag(arrayCarrito);
+    totalCarrito();
+
 }
 /**
  * Función que crea la tabla del carro con los productos añadidos
@@ -293,9 +299,14 @@ function listBag(array) {
             let tdCount = document.createElement("td");
             tdCount.setAttribute("class", "count");
             let num = document.createElement("p");
+            /*Añado id para poder cambiar los totales */
+            let id_num = "count-" + product.id;
+            num.setAttribute("id", id_num);
             num.innerHTML = 1;
             let divCount = document.createElement("div");
-            divCount.addEventListener("click", changeCount);
+            divCount.addEventListener("click", (e) => {
+                changeCount(e, product);
+            });
 
             let plus = document.createElement("input");
             plus.setAttribute("type", "button");
@@ -310,10 +321,21 @@ function listBag(array) {
             // less.addEventListener("click", changeCount);
 
             let tdPrice = document.createElement("td");
+            /*Añado id para cambiar totales */
+            let id_price = "price-" + product.id;
+            tdPrice.setAttribute("id", id_price);
 
             let count = 1;
-            let price = (parseFloat(product.price) * discount * count).toFixed(2);
-            tdPrice.innerHTML = price + " € ";
+            /*
+            Cambio esto, porque estaba aplicando descuento a todos los productos y no solo a los seleccionados
+            */
+            let price;
+            if (product.discount) {
+                price = (parseFloat(product.price) * discount).toFixed(2);
+            } else {
+                price = parseFloat(product.price).toFixed(2);
+            }
+            tdPrice.innerHTML = price + "€";
 
             tr.appendChild(tdName);
             tr.appendChild(tdCount);
@@ -344,6 +366,7 @@ function clearBag() {
     } else {
         empty.removeAttribute("style");
     }
+    totalCarrito();
 
     // //Al menos a machete si funciona =P       
     // // debería borrar relaciones los pedidos
@@ -362,7 +385,7 @@ function clearBag() {
  * Función que suma/resta unidades del producto selecionado
  * Si la cantidad es 0 saltará una ventana de confirmación que preguntará si se desea eliminar el producto
  */
-function changeCount(e) {
+function changeCount(e, product) {
     /* Elemento pulsado para saber si es suma o resta */
     let element = e.target;
     /* Elemento contenedor del número */
@@ -378,6 +401,20 @@ function changeCount(e) {
         count = parseInt(num.innerHTML) - 1;
         num.innerHTML = count;
     }
+
+    /*
+    Aquí cambio el subtotal
+    */
+    let id_Price = "price-" + product.id;
+    let productTotal = document.getElementById(id_Price);
+    let productPrice;
+
+    if (product.discount) {
+        productPrice = (parseFloat(product.price) * discount).toFixed(2);
+    } else {
+        productPrice = parseFloat(product.price).toFixed(2);
+    }
+    productTotal.innerHTML = (productPrice * count).toFixed(2) + "€";
 
     if ((num.innerHTML) == 0) {
         if (confirm("¿Quiere quitar el objeto del carro?")) {
@@ -399,6 +436,8 @@ function changeCount(e) {
     if (arrayCarrito.length == 0) {
         clearBag();
     }
+
+    totalCarrito();
 }
 
 
