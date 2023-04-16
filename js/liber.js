@@ -61,6 +61,13 @@ window.onload = () => {
     const NAV = document.getElementById("nav");
     NAV.addEventListener("click", filtrarProductosEvent);
 
+    /* Ponemos a la escucha los botones del carrusel */
+    const BTN_LEFT = document.getElementById("moverIzquierda");
+    BTN_LEFT.addEventListener("click", moverCarrouselIzquierda);
+
+    const BTN_RGHT = document.getElementById("moverDerecha");
+    BTN_RGHT.addEventListener("click", moverCarrouselDerecha);
+
     /*Comprobar que si existe un usuario logeado*/
     let user = JSON.parse(localStorage.getItem("user"));
     console.log("localStorage user:", user);
@@ -76,6 +83,7 @@ window.onload = () => {
 
     /*Obtenemos los productos */
     getProducts();
+
 }
 
 /**
@@ -147,7 +155,7 @@ function showProductsByUser(products) {
  * @param {*} sales El descuento que debe de aplicarsele al precio del producto
  */
 function createCard(array, divParent, sales) {
-    divParent.innerHTML = "";
+    //divParent.innerHTML = "";
     array.forEach(element => {
         let divProduct = document.createElement("div");
         divProduct.setAttribute("class", "card");

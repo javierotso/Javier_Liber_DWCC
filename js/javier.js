@@ -69,7 +69,6 @@ function filterProductsByUser(productList, filter) {
     }
 
     showProductsByUser(allProductList);
-
 }
 
 /**
@@ -90,4 +89,33 @@ function getProducts(filter) {
             filterProductsByUser(productList, filter);
         });
 
+
+
+}
+
+// ESTAS FUNCIONES DEBERÍAMOS HACERLAS DE OTRA FORMA
+
+/**
+ * Función para mover el carrousel a la derecha
+ */
+function moverCarrouselDerecha() {
+    let divCarrousel = document.getElementById("div-carrousel");
+    let primeraCard = divCarrousel.firstElementChild;
+
+    divCarrousel.removeChild(primeraCard);
+    divCarrousel.appendChild(primeraCard);
+    console.log(primeraCard);
+}
+
+/**
+ * Función para mover el carrousel a la izquierda
+ */
+function moverCarrouselIzquierda() {
+    let divCarrousel = document.getElementById("div-carrousel");
+    let primeraCard = divCarrousel.firstElementChild;
+    let ultimaCard = divCarrousel.lastElementChild;
+
+    divCarrousel.removeChild(ultimaCard);
+
+    divCarrousel.insertBefore(ultimaCard, primeraCard);
 }

@@ -1,6 +1,6 @@
 
     :root {
-        --azul: #244B70;
+        --azul: hsl(209, 51%, 29%);
         --verde: #247037;
         --rojo: #C82424;
         --transparencia: #244b70f0;
@@ -332,4 +332,36 @@ td, th{
 
 .clickeable {
     cursor: pointer;
+}
+
+
+/* CARROUSEL */
+.moverIzquierda, .moverDerecha {
+    padding: 10px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/*
+REVISAR ESTE COLOR
+*/
+.moverDerecha:hover, .moverIzquierda:hover {
+    background-color: rgba(211, 221, 245, 0.678);
+}
+
+#div-carrousel {
+    justify-content: flex-start;
+    overflow: hidden;
+}
+/* 
+(209, 51%, 29%); */
+
+#carrousel {
+    display: flex;
+
+    margin: 0px 10px;
 }
