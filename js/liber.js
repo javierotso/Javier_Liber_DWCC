@@ -177,6 +177,15 @@ function createCard(array, divParent, sales) {
         priceProduct.setAttribute("id", idProducto);
         priceProduct.setAttribute("class", "addBag clickeable");
         priceProduct.addEventListener("click", addBag);
+        /*
+        Aquí añadimos los listener para cambiar el contenido al pasar por encima
+        */
+        priceProduct.addEventListener("mouseenter", () => {
+            priceProduct.value = "Añadir al carrito";
+        });
+        priceProduct.addEventListener("mouseleave", () => {
+            priceProduct.value = priceText;
+        });
 
         divProduct.appendChild(nameProduct);
         divProduct.appendChild(imgProduct);
@@ -203,8 +212,8 @@ function comprar() {
     } else {
         alert("No existen productos que comprar");
     }
-
 }
+
 /**
  * Función que borra todos los productos el carro
  */
@@ -214,6 +223,7 @@ function borrar() {
         clearBag();
     }
 }
+
 /**
  * Función que añade un producto al carro
  */
