@@ -577,11 +577,15 @@ function alertMessage(correct, p, message, element) {
 //Animacion
 //Constante animacion
 const radioTotal = 14;
-const motionDot = '<animateMotion dur="2s" path="M0,0 0,-20 z"/>';
-const transformPhoto = '<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1 1" to="0 0" dur="4s"/>'
-const motionPhotoStart = '<animateMotion dur="4s" path="M0,0 '
-const motionPhotoEnd = '"/>';
+const timeDot = 450;
+const timeAnimateDot = 2;
+const timePhoto = 3700;
+const timeAnimatePhoto = 4.5;
+const motionDot = '<animateMotion dur="'+timeAnimateDot+'s" path="M0,0 0,-20 z"/>';
+const transformPhoto = '<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0" dur="'+timeAnimatePhoto+'s"/>';
+const motionPhoto = '<animateMotion dur="'+timeAnimatePhoto+'s"><mpath xlink:href="#path"></mpath></animateMotion>';
 
+//OJO!!! Las animaciones solo me funcionan la primera vez =*(
 
 
 /**
@@ -591,7 +595,7 @@ function seeDot() {
     console.log('animate: seeDot');
     //Me gusta mas que aparezca pero en ese caso no se una 'animate' en java, se anima con css.
     if (arrayCarrito.length < 2) {
-        dropDot();
+        showUp();
     } else {
         showUp();
     }
@@ -600,11 +604,11 @@ function seeDot() {
 /**
  * Este método desplaza el punto de contador hacia abajo hasta situarlo en la posicion definitiva
  */
-//Solo funciona la primera vez
 function dropDot() {
     console.log('animate: dropDot');
     line.removeAttribute('class');
     text.innerHTML = '';
+    circle.innerHTML = '';
 
     let num;
     if (arrayCarrito.length > 9) {
@@ -622,8 +626,7 @@ function dropDot() {
 /**
  * Este método hace que el punto de contador se agrande hasta llegar a su tamaño final y después aparece el número
  */
-function showUp() {
-    console.log('animate: showDot');
+function showUp() {    
     circle.setAttribute('r', 0);
     line.removeAttribute('class');
     text.innerHTML = '';
@@ -643,75 +646,49 @@ function showUp() {
             setTimeout(() => {
                 text.innerHTML = num;
                 circle.setAttribute('r', radioTotal);
-            }, 450);
-
+            }, timeDot);
         }
-    }, 1);
+    }, timePhoto);
 }
-
+//Solo funcion la primera vez.
 function movePhoto(e) {
     /*Consegimos todos los valores de la imagen para aplicarlos después a la animación */
     let element = e.target;
     let photo = element.previousSibling;
     let pathPhoto = photo.getAttribute('src');
-    
-    /*Consegimos tambien los valores para saber hasta donde llega a la animación */
-    let xFinal;
-    let yFinal;    
-    //Probe con las cordenadas de la imagen pero no funciona porque la imagen esta en 0,0 y después posicionada; =*(    
-    // xFinal = parseFloat(window.innerWidth) - 75;
-    // console.log(window.innerWidth);
-    // console.log(xFinal);
-    // yFinal = parseFloat(window.innerHeight) - 75;
 
-    //No funciona porque coge el tamaño de la ventana y sienpre es la misma aunque haga scroll las dimensiones de de la ventana son las mismas
-    /*let elem = document.getElementById('logo-carrito');
-    let clientRect = elem.getBoundingClientRect();
-    console.log(clientRect);
-    //Devuelve siempre
-        /*DOMRect {x: 640, y: 650, width: 45, height: 45, top: 650, …}
-        bottom: 695
-        height: 45
-        left: 640
-        right: 685
-        top: 650
-        width: 45
-        x: 640
-        y: 650
-        [[Prototype]]: DOMRect
-
-    xFinal = clientRect.x;
-    yFinal = clientRect.y;*/
-
-    
     let movePhoto = document.getElementById('movePhoto');
     let heightSvg = heightWeb();
+    console.log(heightSvg)
     movePhoto.setAttribute('height', heightSvg);
 
     let imgProduct = document.getElementById('imgProduct');
     let mask = document.getElementById('mask');
+    // movePhoto.removeAttribute('style');
 
     setTimeout(() => {
-        movePhoto.removeAttribute('style');
         imgProduct.setAttribute('xlink:href', pathPhoto);
-        let centro = calcularCentro(photo);
-        mask.setAttribute("x", centro['x']);
-        mask.setAttribute("y", centro['y']);
-
-        // let motionPhoto = motionPhotoStart + xFinal + ',' + yFinal+ motionPhotoEnd;
-        // mask.innerHTML = transformPhoto + motionPhoto;
-        // console.log(motionPhoto);
-
+        let coordStart = calcularCentro(photo);
+        let coordEnd = animateEnd(photo, coordStart);
+       
+        let ruta = "M"+coordStart['x'] +','+coordStart['y'] + ' ' + coordEnd['x'] + ',' + coordEnd['y'];
+        
+        let path = document.getElementById('path');
+        path.setAttribute('d', ruta)
+        mask.innerHTML = transformPhoto + motionPhoto       
 
         //Tenemos que volver invisible el svg para que nos deje volver a usar la web.
-        // setTimeout(() => {
-        //     movePhoto.setAttribute('style', 'display:none');
-        //     mask.innerHTML = "";
-        // }, 5000);
+        setTimeout(() => {
+            // movePhoto.setAttribute('style', 'display:none');
+            mask.innerHTML = "";
+            movePhoto.removeAttribute('height');
+            path.removeAttribute('d');
+            imgProduct.setAttribute('xlink:href', '');
+        }, timePhoto);
     }, 1);
 }
 
-function heightWeb(){
+function heightWeb() {
     /*Fijamos la altura de svg a la altura total de la web:
     Para ello buscamos el ultimo objeto visible de la web y tomamos su coordenaday y su altura */
     let elem = document.querySelector('#div-productos div:last-child');
@@ -719,8 +696,8 @@ function heightWeb(){
     return heightWeb;
 }
 
-function calcularCentro(element){
-    let centro =[];
+function calcularCentro(element) {
+    let centro = [];
     let xPhoto = element.offsetLeft;
     let yPhoto = element.offsetTop;
     let widthPhoto = element.offsetWidth;
@@ -731,8 +708,35 @@ function calcularCentro(element){
 
     centro['x'] = xCentro;
     centro['y'] = yCentro;
+    console.log(centro);
 
     return centro;
-
 }
 
+function animateEnd(photo, centro) {
+    /*Consegimos los valores para saber hasta donde llega a la animación */
+    let coord = [];
+    let carrito = document.getElementById('logo-carrito');
+    let coordCarrito = coordElement(carrito);
+    console.log(coordCarrito);
+    let coordImagen = coordElement(photo);
+    console.log(coordImagen);
+
+    /*Calculamos la diferencia entre la prosicion relativa a la ventana de la foto(principio) y del contador(final). Después sumamos la posicion absoluta dentro de la web de la imagen (principio absoluto). Por último hacemos correciones para marcar el punto central del contador. 
+    Esto en ambas coordenadas*/
+    coord['x'] = parseFloat(centro['x']) + (parseFloat(coordCarrito['x']) - parseFloat(coordImagen['x'])) - 110;
+    coord['y'] = parseFloat(centro['y']) + (parseFloat(coordCarrito['y']) - parseFloat(coordImagen['y'])) - 110;
+    console.log(coord)
+    return coord;
+}
+
+function coordElement(element) {
+    let coord = [];
+    let clientRect = element.getBoundingClientRect();
+    /*Coge el tamaño de la ventana y siempre es la misma, aunque haga scroll las dimensiones de de la ventana son las mismas.
+        clientRect del carro devuelve siempre:
+            DOMRect {x: 640, y: 650, width: 45, height: 45, top: 650, …}*/
+    coord['x'] = clientRect.x;
+    coord['y'] = clientRect.y;
+    return coord;
+}

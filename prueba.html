@@ -15,44 +15,48 @@
       left: 0px;
       z-index: 4;
     }
-    .move{
-    position: absolute;
-    width: 200vw;
-    height: 2000vh;
-    top: 0px;
-    left: 0px;
-    z-index: 2;
-  }
+
+    .move {
+      position: absolute;
+      width: 100%;
+      /* height: 2000vh; */
+      top: 0px;
+      left: 0px;
+      z-index: 2;
+    }
   </style>
 </head>
 
 <body>
-  <!-- <svg id="prueba">
-    <defs>
-      <circle id="myCircle" cx="0" cy="0" r="50" stroke-width="3" stroke="#aac5db" />
-      <pattern id="photo" width="1" height="1">
-        <image id="photoimg" xlink:href="img/product/product2.jpg" x="-18" height="100"></image>
-      </pattern>
-    </defs>
-    <use x="100" y="150" href="#myCircle" fill="url(#photo)" stroke="#aac5db">
-      <animateTransform attributeName="transform" attributeType="XML" type="scale" from="1 1" to="0 0" dur="2s" />
-      <animateMotion dur="2s" path="M0,0 979,665" />
-    </use>
-  </svg> -->
 
-  <svg id="movePhoto" class="move">
+  <svg id="movePhoto" class="move" height="9317">
+    <path id="ruta" fill="none" stroke="red" d="M50,0 711.671875,735.5" />
     <defs>
       <circle id="myCircle" cx="0" cy="0" r="75" />
       <pattern id="fillPhoto" width="1" height="1">
         <image id="imgProduct" xlink:href="" x="-18" height="150"></image>
       </pattern>
     </defs>
-    <use id="mask" x="188" y="275" href="#myCircle" fill="url(#fillPhoto)" stroke-width="3" stroke="#244B70">
-      <animateTransform attributeName="transform" attributeType="XML" type="scale" from="1 1" to="0 0" dur="2s" />
-      <animateMotion dur="2s" path="M0,0 979,665"/>
+    <use id="mask" x="0" y="0" href="#myCircle" fill="url(#fillPhoto)" stroke-width="3" stroke="#244B70">
+      <!-- <animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0" dur="10s" /> -->
+      <!-- <animateMotion dur="2s" path="M0,0 711.671875,735.5" /> -->
+      <animateMotion dur="10s">
+        <mpath xlink:href="#ruta"></mpath>
+      </animateMotion>
     </use>
   </svg>
 
 </body>
+<!-- <script>
+  window.onload = () => {
+    const duracion = '50s';
+    let trans = document.querySelector('animateTransform');
+    let moti = document.querySelector('animateMotion');
+    setTimeout(() => {
+      trans.setAttribute('dur', duracion);
+      moti.setAttribute('dur', duracion);
+    }, 100);
+  }
+</script> -->
 
 </html>

@@ -387,30 +387,19 @@ main {
     0% {
         stroke-width: 0px;
     }
-
     /* 15% {
-      stroke-width: 5px;
+      stroke-width: 0px;
     }
     20% {
-      stroke-width: 15px;
+      stroke-width: 0px;
     } */
     100% {
         stroke-width: 25px;
     }
 }
-
-.scale25 {
-    font-size: 0.25em
-}
-
-.scale100 {
-    font-size: 1em
-}
-
 .move {
     position: absolute;
     width: 100%;
-    /* height: 100%; */
     top: 0px;
     left: 0px;
     z-index: 2;
