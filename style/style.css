@@ -371,8 +371,8 @@ main {
 /* Animación */
 #contador {
     position: fixed;
-    right: 25px;
-    bottom: 89px;
+    right: 28px;
+    bottom: 87px;
     z-index: 2;
 }
 
@@ -403,4 +403,5 @@ main {
     top: 0px;
     left: 0px;
     z-index: 2;
+    color: #fefefee7
 }

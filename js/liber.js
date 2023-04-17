@@ -260,7 +260,7 @@ function addBag(e) {
     }
     /* Cada vez que se añada un producto se muestra en la lista automaticamente*/
     listBag(arrayCarrito);
-    seeDot();
+    dropDot();
 
 }
 /**
@@ -577,6 +577,7 @@ function alertMessage(correct, p, message, element) {
 //Animacion
 //Constante animacion
 const radioTotal = 14;
+const curvatura = 20;
 const timeDot = 450;
 const timeAnimateDot = 2;
 const timePhoto = 3700;
@@ -587,20 +588,6 @@ const motionPhoto = '<animateMotion dur="'+timeAnimatePhoto+'s"><mpath xlink:hre
 
 //OJO!!! Las animaciones solo me funcionan la primera vez =*(
 
-
-/**
- * Este método hace que el punto de contador se agrande hasta llegar a su tamaño final y despues aparece el número
- */
-function seeDot() {
-    console.log('animate: seeDot');
-    //Me gusta mas que aparezca pero en ese caso no se una 'animate' en java, se anima con css.
-    if (arrayCarrito.length < 2) {
-        showUp();
-    } else {
-        showUp();
-    }
-
-}
 /**
  * Este método desplaza el punto de contador hacia abajo hasta situarlo en la posicion definitiva
  */
@@ -658,8 +645,7 @@ function movePhoto(e) {
     let pathPhoto = photo.getAttribute('src');
 
     let movePhoto = document.getElementById('movePhoto');
-    let heightSvg = heightWeb();
-    console.log(heightSvg)
+    let heightSvg = heightWeb();    
     movePhoto.setAttribute('height', heightSvg);
 
     let imgProduct = document.getElementById('imgProduct');
@@ -671,8 +657,8 @@ function movePhoto(e) {
         let coordStart = calcularCentro(photo);
         let coordEnd = animateEnd(photo, coordStart);
        
-        let ruta = "M"+coordStart['x'] +','+coordStart['y'] + ' ' + coordEnd['x'] + ',' + coordEnd['y'];
-        
+        let ruta = "M "+coordStart['x'] +' '+coordStart['y'] + ' Q ' +curvatura+' ' +coordStart['x'] +' '+ coordEnd['x'] + ' ' + coordEnd['y'];
+        console.log(ruta)
         let path = document.getElementById('path');
         path.setAttribute('d', ruta)
         mask.innerHTML = transformPhoto + motionPhoto       

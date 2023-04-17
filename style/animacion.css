@@ -1,0 +1,36 @@
+/* Animación */
+#contador {
+    position: fixed;
+    right: 28px;
+    bottom: 87px;
+    z-index: 2;
+}
+
+
+.count-dot {
+    stroke-width: 25px;
+    stroke-linecap: round;
+    animation: dot-grow 1s;
+}
+
+@keyframes dot-grow {
+    0% {
+        stroke-width: 0px;
+    }
+    /* 15% {
+      stroke-width: 0px;
+    }
+    20% {
+      stroke-width: 0px;
+    } */
+    100% {
+        stroke-width: 25px;
+    }
+}
+.move {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+}

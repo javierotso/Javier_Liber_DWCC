@@ -164,14 +164,14 @@
 
   <!-- Animacion de imagen dentro de svg -->
   <svg id="movePhoto" class="move" >
-    <path id="path" fill="none"/>
+    <path id="path" fill="none" stroke="red" />
     <defs>
       <circle id="myCircle" cx="0" cy="0" r="75"/>
       <pattern id="fillPhoto" width="1" height="1" >
-        <image id="imgProduct" xlink:href="" x="-18" height="150"></image>
+        <image id="imgProduct" xlink:href="" x="-18" height="150" style="opacity: 0.4"></image>
       </pattern>
     </defs>    
-    <use id="mask" x="0" y="0" href="#myCircle" fill="url(#fillPhoto)" stroke-width="3" stroke="#244B70"></use>
+    <use id="mask" x="0" y="0" href="#myCircle" fill="url(#fillPhoto)" stroke-width="3" stroke="#244B70" ></use>
     
   </svg>
 
