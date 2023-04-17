@@ -373,3 +373,10 @@ div.precio {
     font-weight: 100;
 }
 
+
+/*
+ Cambio disposición texto td de nombre articulo
+*/ 
+.list td.descp {
+    text-align: left;
+}

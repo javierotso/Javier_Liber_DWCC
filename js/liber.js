@@ -295,6 +295,7 @@ function listBag(array) {
             tr.setAttribute("name", product.id);
 
             let tdName = document.createElement("td");
+            tdName.classList.add("descp");
             tdName.innerHTML = product.name;
             let tdCount = document.createElement("td");
             tdCount.setAttribute("class", "count");
