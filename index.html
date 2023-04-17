@@ -20,8 +20,10 @@
     <script src="js/class/cliente.js"></script>
     <script src="js/class/pedido.js"></script>
     <script src="js/class/producto.js"></script>
+    <script src="js/animacion.js"></script>
     <script src="js/javier.js"></script>
     <script src="js/liber.js"></script>
+    <script src="js/onload.js"></script>
   </head>
 
   <body>
@@ -36,7 +38,7 @@
         <nav id="nav" style="display: none">
           <h1>Categorías</h1>
           <div class="clickeable" id="perfumeria">Perfumería</div>
-          <div class="clickeable" id="cosmetica">Cosmética</div>
+          <div class="clickeable" id="cosmetic">Cosmética</div>
           <div class="clickeable" id="maquillaje">Maquillaje</div>
           <div class="clickeable" id="higiene">Higiene</div>
           <div class="clickeable" id="cabello">Cabello</div>
@@ -74,6 +76,7 @@
           />
         </span>
       </div>
+      <h2 id="title"></h2>
       <div id="div-productos"></div>
     </main>
     <div id="div-carrito">
@@ -117,6 +120,7 @@
           </div>
           <thead>
             <tr>
+              <th></th>
               <th>Producto</th>
               <th>Cantidad</th>
               <th>Total</th>
@@ -124,7 +128,7 @@
           </thead>
           <tbody id="contenido-carrito">
             <tr id="empty">
-              <td colspan="3">No existen productos que mostrar</td>
+              <td colspan="4">No existen productos que mostrar</td>
             </tr>
           </tbody>
         </table>
@@ -246,7 +250,7 @@
       <defs>
         <circle id="myCircle" cx="0" cy="0" r="75" />
         <pattern id="fillPhoto" width="1" height="1">
-          <image id="imgProduct" xlink:href="" x="-18" height="150"></image>
+          <image id="imgProduct" xlink:href="" x="-18" height="150" style="opacity: 0.9;"></image>
         </pattern>
       </defs>
       <use
@@ -255,8 +259,6 @@
         y="0"
         href="#myCircle"
         fill="url(#fillPhoto)"
-        stroke-width="3"
-        stroke="#244B70"
       ></use>
     </svg>
   </body>

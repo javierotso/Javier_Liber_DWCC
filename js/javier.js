@@ -10,6 +10,31 @@ function filtrarProductosEvent(e) {
     if (elementId !== "nav") {
         getProducts(elementId);
         document.getElementById("nav").style.display = "none";
+
+        /*
+        Mostrar título de donde estamos
+        */
+       let title = document.getElementById("title");
+       let titleTxt = "Todo";
+
+       switch(elementId) {
+        case "cosmetic":
+            titleTxt = "Cosmética";
+            break;
+        case "higiene":
+            titleTxt = "Higiene";
+            break;
+        case "perfumeria":
+            titleTxt = "Perfumería";
+            break;
+        case "cabello":
+            titleTxt = "Cabello";
+            break;
+        case "maquillaje":
+            titleTxt = "Maquillaje";
+            break;
+       }
+       title.innerHTML = titleTxt;
     }
 }
 

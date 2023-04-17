@@ -34,58 +34,6 @@ let allProductList = [];
 allProductList["salesProduct"] = [];
 allProductList["products"] = [];
 
-
-
-
-window.onload = () => {
-    /*Escucha del menu lateral*/
-    let menu = document.getElementById("img-menu");
-    menu.addEventListener("click", extend);
-    /*Escucha del icono carrito*/
-    let carrito = document.getElementById("div-logo-carrito");
-    carrito.addEventListener("click", extend);
-    /*Escucha cerrar lista carrito*/
-    let cerrarCarrito = document.getElementById("cerrar-carrito");
-    cerrarCarrito.addEventListener("click", close);
-    /*Escucha texto de registro usuario*/
-    let register = document.getElementById("user-title");
-    register.addEventListener("click", registerModal);
-    /*Escucha la foto de usuario para cerrar sesion*/
-    let cerrarSesion = document.getElementById("cerrar-sesion");
-    cerrarSesion.addEventListener("click", closeSesion);
-    /*Escucha del boton borrar*/
-    let borra = document.getElementById("borrar");
-    borra.addEventListener("click", borrar);
-
-    /* Ponemos a la escucha los filtros del menú lateral */
-    const NAV = document.getElementById("nav");
-    NAV.addEventListener("click", filtrarProductosEvent);
-
-    /* Ponemos a la escucha los botones del carrusel */
-    const BTN_LEFT = document.getElementById("moverIzquierda");
-    BTN_LEFT.addEventListener("click", moverCarrouselIzquierda);
-
-    const BTN_RGHT = document.getElementById("moverDerecha");
-    BTN_RGHT.addEventListener("click", moverCarrouselDerecha);
-
-    /*Comprobar que si existe un usuario logeado*/
-    let user = JSON.parse(localStorage.getItem("user"));
-    console.log("localStorage user:", user);
-    if (user != null) {
-        /*Escucha del boton comprar solo si hay usuario*/
-        let compra = document.getElementById("comprar");
-        compra.addEventListener("click", comprar);
-
-        clienteLogeado = new Cliente(user.id, user.name, user.dni, user.phone, user.address, user.birth, user.suscp, user.card, user.email, user.password, user.img);
-        register.removeEventListener("click", registerModal);
-        helloUser(clienteLogeado);
-    }
-
-    /*Obtenemos los productos */
-    getProducts();
-
-}
-
 /**
  * Función que despliega los menus;
  */
@@ -179,7 +127,10 @@ function createCard(array, divParent, sales) {
 
         productPrice.setAttribute("id", idProducto);
         productPrice.setAttribute("class", "addBag clickeable price");
-        productPrice.addEventListener("click", addBag);
+        productPrice.addEventListener("click", (e) => {
+            movePhoto(e);
+            addBag(e);
+        });
 
         /*
         Cambiamos el value en caso de que estemos en el carrousel
@@ -249,8 +200,6 @@ function addBag(e) {
     let id = element.id;
     let product = arrayProductos[id];
 
-    let totalBag = document.getElementById("total-carrito");
-
     if (arrayCarrito.length > 0) {
         let repeat = false;
         for (let i = 0; i < arrayCarrito.length && !repeat; i++) {
@@ -270,7 +219,7 @@ function addBag(e) {
     /* Cada vez que se añada un producto se muestra en la lista automaticamente*/
     listBag(arrayCarrito);
     totalCarrito();
-
+    showUp();
 }
 /**
  * Función que crea la tabla del carro con los productos añadidos
@@ -293,6 +242,15 @@ function listBag(array) {
             let tr = document.createElement("tr");
             tr.setAttribute("class", "list");
             tr.setAttribute("name", product.id);
+
+            let tdImg = document.createElement("td");
+            tdImg.classList.add("td-img");
+            let img = document.createElement("img");
+            img.classList.add("img-carrito");
+            img.src = product.path;
+            img.atl = product.name;
+            tdImg.appendChild(img);
+            tr.appendChild(tdImg);
 
             let tdName = document.createElement("td");
             tdName.classList.add("descp");
@@ -368,19 +326,6 @@ function clearBag() {
         empty.removeAttribute("style");
     }
     totalCarrito();
-
-    // //Al menos a machete si funciona =P       
-    // // debería borrar relaciones los pedidos
-    // let contenido = document.getElementById("contenido-carrito");
-    // contenido.innerHTML = "";
-    // let empty = document.createElement("tr");
-    // empty.setAttribute("id", "empty");
-    // let tdEmpty = document.createElement("td");
-    // tdEmpty.setAttribute("colspan", "3");
-    // tdEmpty.innerHTML = "No existen productos que mostrar";
-
-    // empty.appendChild(tdEmpty);
-    // contenido.appendChild(empty);
 }
 /**
  * Función que suma/resta unidades del producto selecionado
