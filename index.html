@@ -182,7 +182,7 @@
 
   <!-- Animacion de imagen dentro de svg -->
   <svg id="movePhoto" class="move">
-    <path id="path" fill="none" stroke="red" />
+    <path id="path" fill="none" />
     <defs>
       <circle id="myCircle" cx="0" cy="0" r="75" />
       <pattern id="fillPhoto" width="1" height="1">
@@ -190,8 +190,6 @@
       </pattern>
     </defs>
     <use id="mask" x="0" y="0" href="#myCircle" fill="url(#fillPhoto)">
-      <animateTransform id="transformPhoto" attributeName="transform" attributeType="XML" type="scale" from="1" to="0"/>
-      <animateMotion id="motionPhoto"><mpath xlink:href="#path"></mpath></animateMotion>
     </use>
   </svg>
 </body>
