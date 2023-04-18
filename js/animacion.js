@@ -1,11 +1,7 @@
 //Animacion
-// Variables animacion
-let contador;
-let line;
-let circle;
-let text;
 //Constante animacion
 const radioTotal = 14;
+const curvatura = 20;
 const timeDot = 450;
 const timeAnimateDot = 2;
 const timePhoto = 3700;
@@ -16,6 +12,28 @@ const motionPhoto = '<animateMotion dur="'+timeAnimatePhoto+'s"><mpath xlink:hre
 
 //OJO!!! Las animaciones solo me funcionan la primera vez =*(
 
+/**
+ * Este método desplaza el punto de contador hacia abajo hasta situarlo en la posicion definitiva
+ */
+function dropDot() {
+    console.log('animate: dropDot');
+    line.removeAttribute('class');
+    text.innerHTML = '';
+    circle.innerHTML = '';
+
+    let num;
+    if (arrayCarrito.length > 9) {
+        num = '+';
+    } else {
+        num = arrayCarrito.length;
+    }
+
+    if (arrayCarrito.length > 0) {
+        contador.removeAttribute("style");
+        circle.innerHTML = motionDot;
+        text.innerHTML = num + motionDot;
+    }
+}
 /**
  * Este método hace que el punto de contador se agrande hasta llegar a su tamaño final y después aparece el número
  */
@@ -49,11 +67,14 @@ function movePhoto(e) {
     let element = e.target;
     let photo = element.previousSibling;
     let pathPhoto = photo.getAttribute('src');
-
     let movePhoto = document.getElementById('movePhoto');
-    let heightSvg = heightWeb();
-    console.log(heightSvg)
+
+    let cloneSvg = movePhoto.cloneNode(true);
+
+    let heightSvg = heightWeb();   
+    console.log("altura"+heightSvg) 
     movePhoto.setAttribute('height', heightSvg);
+    console.log(movePhoto.parentElement);
 
     let imgProduct = document.getElementById('imgProduct');
     let mask = document.getElementById('mask');
@@ -64,8 +85,8 @@ function movePhoto(e) {
         let coordStart = calcularCentro(photo);
         let coordEnd = animateEnd(photo, coordStart);
        
-        let ruta = "M"+coordStart['x'] +','+coordStart['y'] + ' ' + coordEnd['x'] + ',' + coordEnd['y'];
-        
+        let ruta = "M "+coordStart['x'] +' '+coordStart['y'] + ' Q ' +curvatura+' ' +coordStart['x'] +' '+ coordEnd['x'] + ' ' + coordEnd['y'];
+        console.log(ruta)
         let path = document.getElementById('path');
         path.setAttribute('d', ruta)
         mask.innerHTML = transformPhoto + motionPhoto       
@@ -77,6 +98,8 @@ function movePhoto(e) {
             movePhoto.removeAttribute('height');
             path.removeAttribute('d');
             imgProduct.setAttribute('xlink:href', '');
+            movePhoto.parentElement.appendChild(cloneSvg);
+            movePhoto.parentElement.removeChild(movePhoto);
         }, timePhoto);
     }, 1);
 }
@@ -85,6 +108,7 @@ function heightWeb() {
     /*Fijamos la altura de svg a la altura total de la web:
     Para ello buscamos el ultimo objeto visible de la web y tomamos su coordenaday y su altura */
     let elem = document.querySelector('#div-productos>div:last-child');
+    console.log("element" + elem)
     let heightWeb = parseFloat(elem.offsetTop) + parseFloat(elem.offsetHeight);
     return heightWeb;
 }
