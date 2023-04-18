@@ -62,11 +62,11 @@ function showUp() {
     }, timePhoto);
 }
 //Solo funcion la primera vez.
-function movePhoto(e) {
+function movePhoto(photo) {
     /*Consegimos todos los valores de la imagen para aplicarlos después a la animación */
-    let element = e.target;
-    let photo = element.previousSibling;
-    let pathPhoto = photo.getAttribute('src');
+    // let element = e.target;
+    // let photo = element.previousSibling;
+     let pathPhoto = photo.src;
     let movePhoto = document.getElementById('movePhoto');
 
     let cloneSvg = movePhoto.cloneNode(true);
@@ -84,8 +84,10 @@ function movePhoto(e) {
         imgProduct.setAttribute('xlink:href', pathPhoto);
         let coordStart = calcularCentro(photo);
         let coordEnd = animateEnd(photo, coordStart);
-       
-        let ruta = "M "+coordStart['x'] +' '+coordStart['y'] + ' Q ' +curvatura+' ' +coordStart['x'] +' '+ coordEnd['x'] + ' ' + coordEnd['y'];
+        
+        let xMax = (coordEnd['x'] - coordStart['x'])/3;
+        let yMax = (coordEnd['y'] - coordStart['y'])/3;
+        let ruta = "M "+coordStart['x'] +' '+coordStart['y'] + ' Q ' +xMax+' ' +yMax+' '+ coordEnd['x'] + ' ' + coordEnd['y'];
         console.log(ruta)
         let path = document.getElementById('path');
         path.setAttribute('d', ruta)
@@ -114,21 +116,14 @@ function heightWeb() {
 }
 
 function calcularCentro(element) {
+    let a = element.getBoundingClientRect();
     let centro = [];
-    let xPhoto = element.offsetLeft;
-    let yPhoto = element.offsetTop;
-    let widthPhoto = element.offsetWidth;
-    let heightPhoto = element.offsetHeight;
-
-    let xCentro = parseFloat(xPhoto + widthPhoto / 2);
-    let yCentro = parseFloat(yPhoto + heightPhoto / 2);
-
-    centro['x'] = xCentro;
-    centro['y'] = yCentro;
-    console.log(centro);
+    centro['x'] = parseInt(a.left) + parseInt(element.width / 2);
+    centro['y'] = parseInt(a.top) + parseInt(element.height / 2) + parseInt(scrollY);
 
     return centro;
 }
+
 
 function animateEnd(photo, centro) {
     /*Consegimos los valores para saber hasta donde llega a la animación */

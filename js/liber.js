@@ -128,8 +128,18 @@ function createCard(array, divParent, sales) {
         productPrice.setAttribute("id", idProducto);
         productPrice.setAttribute("class", "addBag clickeable price");
         productPrice.addEventListener("click", (e) => {
-            movePhoto(e);
-            addBag(e);
+            let repeat = false;
+            for (let i = 0; i < arrayCarrito.length && !repeat; i++) {
+                const article = arrayCarrito[i];
+                if (article.id == idProducto) {
+                    repeat = true;
+
+                }
+            }
+            if (!repeat) {
+                movePhoto(imgProduct);
+                addBag(e);
+            }
         });
 
         /*
@@ -200,21 +210,7 @@ function addBag(e) {
     let id = element.id;
     let product = arrayProductos[id];
 
-    if (arrayCarrito.length > 0) {
-        let repeat = false;
-        for (let i = 0; i < arrayCarrito.length && !repeat; i++) {
-            const article = arrayCarrito[i];
-            if (article.id == id) {
-                repeat = true;
-            }
-        }
-        if (!repeat) {
-            arrayCarrito.push(product);
-            // falta añadir la relacion en el json pedido
-        }
-    } else {
-        arrayCarrito.push(product);
-    }
+    arrayCarrito.push(product);
 
     /* Cada vez que se añada un producto se muestra en la lista automaticamente*/
     listBag(arrayCarrito);
@@ -325,6 +321,7 @@ function clearBag() {
     } else {
         empty.removeAttribute("style");
     }
+    document.getElementById("contador").style.display = "none";
     totalCarrito();
 }
 /**
