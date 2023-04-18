@@ -58,7 +58,7 @@ function showUp(timePhoto) {
                 circle.setAttribute('r', radioTotal);
             }, timeDot);
         }
-    }, timePhoto*0.9);
+    }, timePhoto*0.8);
 }
 //Solo funcion la primera vez.
 function movePhoto(photo) {
