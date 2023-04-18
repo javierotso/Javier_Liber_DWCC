@@ -42,7 +42,6 @@ function extend(e) {
     let element = e.target;
     /* Esto es mejorable */
     if (e.target.getAttribute("id") == "logo-carrito") {
-        console.log(element);
         element = element.parentNode;
     }
     /* Elemento "hermano" que debe mostrarse/ocultarse */
@@ -177,10 +176,7 @@ function createCard(array, divParent, sales) {
  * Función que simula la realización de la compra de todos los productos del carro
  */
 function comprar() {
-    console.log("funcion comprar");
     let tbody = document.getElementById("contenido-carrito");
-
-    console.log("carro:", arrayCarrito.length)
     if (arrayCarrito.length > 0) {
         arrayCarrito = [];
         clearBag();
@@ -205,7 +201,6 @@ function borrar() {
  */
 function addBag(e) {
     //Debería abrirse la cesta de manera automática¿?
-    console.log("añadir carrito")
     let element = e.target;
     let id = element.id;
     let product = arrayProductos[id];
@@ -222,8 +217,6 @@ function addBag(e) {
  */
 function listBag(array) {
     if (array.length > 0) {
-        console.log("lista carro");
-        console.log(arrayCarrito);
         let tbody = document.getElementById("contenido-carrito");
         /* Borramos toda la lista*/
         clearBag();
@@ -308,8 +301,7 @@ function listBag(array) {
 function clearBag() {
     //No se por queno funciona =( =(
     let clearChild = document.querySelectorAll(".list");
-    console.log("limpiar", clearChild);
-    console.log("dimension:", clearChild.length);
+   
     for (let i = 0; i < clearChild.length; i++) {
         const element = clearChild[i];
         element.parentElement.removeChild(element);
@@ -391,7 +383,6 @@ function changeCount(e, product) {
  * @param {*} element Elemento del modal
  */
 function login(p, element) {
-    console.log("function login");
     let correct = false;
     let message = "Compruebe su email y contraseña";
 
@@ -435,7 +426,6 @@ function closeSesion() {
  * @param {*} element Elemento del modal
  */
 function register(p, element) {
-    console.log("function register");
     let correct = false;
     let message = "Ha ocurrido un error. Porfavor vuelva a intentarlo";
 
@@ -461,15 +451,12 @@ function register(p, element) {
  * @param {*} cliente Objeto del cliente que ha iniciao sesión 
  */
 function helloUser(cliente) {
-    console.log("hola", cliente.img);
     let title = document.getElementById("user-title");
     title.classList.remove("clickeable");
     let textHello = "Hola " + cliente.name;
     title.innerHTML = textHello;
     let img = document.getElementById("user-img");
-    console.log
     img.src = cliente["img"];
-    console.log(img);
 
     /* Mostramos flechas de carrousel */
     document.getElementById("moverDerecha").style.display = "flex";
@@ -487,7 +474,6 @@ function helloUser(cliente) {
  * Función que muestra el formulario de registro para un nuevo usuario
  */
 function registerModal() {
-    console.log("modal register");
     /* Limpiamos las alertas previas, si las hay*/
     let pUser = document.getElementById("register-ok");
     pUser.removeAttribute("style");
@@ -515,7 +501,6 @@ function registerModal() {
  * Función que muestra el formulario de acceso un usuario ya registrado
  */
 function loginModal() {
-    console.log("modal login");
     //Limpiamos alerta 
     let pLogin = document.getElementById("login-ok");
     pLogin.removeAttribute("style");

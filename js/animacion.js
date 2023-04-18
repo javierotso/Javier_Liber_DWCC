@@ -5,7 +5,7 @@ const curvatura = 20;
 const timeDot = 450;
 // let timePhoto;
 const timeAnimateDot = 2;
-const velocidadOptima = 188;
+const velocidadOptima = 168;
 const motionDot = '<animateMotion dur="' + timeAnimateDot + 's" path="M0,0 0,-20 z"/>';
 // let transformPhoto = '<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0" dur="' + timeAnimatePhoto + 's"/>';
 // let motionPhoto = '<animateMotion dur="' + timeAnimatePhoto + 's"><mpath xlink:href="#path"></mpath></animateMotion>';
@@ -16,7 +16,6 @@ const motionDot = '<animateMotion dur="' + timeAnimateDot + 's" path="M0,0 0,-20
  * Este método desplaza el punto de contador hacia abajo hasta situarlo en la posicion definitiva
  */
 function dropDot() {
-    console.log('animate: dropDot');
     line.removeAttribute('class');
     text.innerHTML = '';
     circle.innerHTML = '';
@@ -72,9 +71,7 @@ function movePhoto(photo) {
     let cloneSvg = movePhoto.cloneNode(true);
 
     let heightSvg = heightWeb();
-    console.log("altura" + heightSvg)
     movePhoto.setAttribute('height', heightSvg);
-    console.log(movePhoto.parentElement);
 
     let imgProduct = document.getElementById('imgProduct');
     let mask = document.getElementById('mask');
@@ -86,14 +83,13 @@ function movePhoto(photo) {
         let coordEnd = calcularCentro(document.getElementById("logo-carrito"));
 
         let ruta = "M " + coordStart['x'] + ' ' + coordStart['y'] + ' Q ' + coordEnd['x'] + ' ' + coordStart['y'] + ' ' + coordEnd['x'] + ' ' + (coordEnd['y'] - 40);
-        console.log(ruta)
         let path = document.getElementById('path');
         path.setAttribute('d', ruta)
 
         let timeAnimatePhoto = tiempoAnimacion(coordStart, coordEnd);
         let transformPhoto = '<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0" dur="' + timeAnimatePhoto + 's"/>';
         let motionPhoto = '<animateMotion dur="' + timeAnimatePhoto + 's"><mpath xlink:href="#path"></mpath></animateMotion>';
-
+        console.log(timeAnimatePhoto);
 
         mask.innerHTML = transformPhoto + motionPhoto
         let timePhoto = (timeAnimatePhoto * 1000);
@@ -118,7 +114,6 @@ function heightWeb() {
     /*Fijamos la altura de svg a la altura total de la web:
     Para ello buscamos el ultimo objeto visible de la web y tomamos su coordenaday y su altura */
     let elem = document.querySelector('#div-productos>div:last-child');
-    console.log("element" + elem)
     let heightWeb = parseFloat(elem.offsetTop) + parseFloat(elem.offsetHeight);
     return heightWeb;
 }
