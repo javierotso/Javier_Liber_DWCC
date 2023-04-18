@@ -643,8 +643,10 @@ function movePhoto(e) {
     let element = e.target;
     let photo = element.previousSibling;
     let pathPhoto = photo.getAttribute('src');
-
     let movePhoto = document.getElementById('movePhoto');
+
+    let cloneSvg = movePhoto.cloneNode(true);
+
     let heightSvg = heightWeb();    
     movePhoto.setAttribute('height', heightSvg);
 
@@ -670,6 +672,8 @@ function movePhoto(e) {
             movePhoto.removeAttribute('height');
             path.removeAttribute('d');
             imgProduct.setAttribute('xlink:href', '');
+            movePhoto.parentNode.appendChild(cloneSvg);
+            movePhoto.parentNode.removeChild(movePhoto);
         }, timePhoto);
     }, 1);
 }
