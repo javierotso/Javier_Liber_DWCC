@@ -3,9 +3,9 @@
 const radioTotal = 14;
 const curvatura = 20;
 const timeDot = 450;
+// let timePhoto;
 const timeAnimateDot = 2;
-const timePhoto = 3700;
-const velocidadOptima = 238;
+const velocidadOptima = 188;
 const motionDot = '<animateMotion dur="' + timeAnimateDot + 's" path="M0,0 0,-20 z"/>';
 // let transformPhoto = '<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0" dur="' + timeAnimatePhoto + 's"/>';
 // let motionPhoto = '<animateMotion dur="' + timeAnimatePhoto + 's"><mpath xlink:href="#path"></mpath></animateMotion>';
@@ -37,7 +37,7 @@ function dropDot() {
 /**
  * Este método hace que el punto de contador se agrande hasta llegar a su tamaño final y después aparece el número
  */
-function showUp() {
+function showUp(timePhoto) {
     circle.setAttribute('r', 0);
     line.removeAttribute('class');
     text.innerHTML = '';
@@ -91,25 +91,26 @@ function movePhoto(photo) {
         path.setAttribute('d', ruta)
 
         let timeAnimatePhoto = tiempoAnimacion(coordStart, coordEnd);
-        let transformPhoto = document.getElementById("transformPhoto");
-        transformPhoto.setAttribute("dur", timeAnimatePhoto + "s")
-        let motionPhoto = document.getElementById("motionPhoto");
-        motionPhoto.setAttribute("dur", timeAnimatePhoto + "s")
-        console.error(timeAnimatePhoto)
-
-        // mask.innerHTML = transformPhoto + motionPhoto
+        let transformPhoto = '<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0" dur="' + timeAnimatePhoto + 's"/>';
+        let motionPhoto = '<animateMotion dur="' + timeAnimatePhoto + 's"><mpath xlink:href="#path"></mpath></animateMotion>';
 
 
+        mask.innerHTML = transformPhoto + motionPhoto
+        let timePhoto = (timeAnimatePhoto * 1000);
+        
+        
+        
         //Tenemos que volver invisible el svg para que nos deje volver a usar la web.
         setTimeout(() => {
             // movePhoto.setAttribute('style', 'display:none');
-            mask.innerHTML = "";
-            movePhoto.removeAttribute('height');
-            path.removeAttribute('d');
-            imgProduct.setAttribute('xlink:href', '');
+            // mask.innerHTML = "";
+            // movePhoto.removeAttribute('height');
+            // path.removeAttribute('d');
+            // imgProduct.setAttribute('xlink:href', '');
             movePhoto.parentElement.appendChild(cloneSvg);
             movePhoto.parentElement.removeChild(movePhoto);
         }, timePhoto);
+        showUp(timePhoto);
     }, 1);
 }
 

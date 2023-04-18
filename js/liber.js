@@ -215,7 +215,6 @@ function addBag(e) {
     /* Cada vez que se añada un producto se muestra en la lista automaticamente*/
     listBag(arrayCarrito);
     totalCarrito();
-    showUp();
 }
 /**
  * Función que crea la tabla del carro con los productos añadidos
