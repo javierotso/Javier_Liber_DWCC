@@ -1,265 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Perfumería Liber & Javier</title>
-    <!-- Estilo letra -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap"
-      rel="stylesheet"
-    />
 
-    <!-- Añadir css -->
-    <link rel="stylesheet" href="style/style.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfumería Liber & Javier</title>
+  <!-- Estilo letra -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap"
+    rel="stylesheet" />
 
-    <!-- Añadir script -->
-    <script src="js/class/cliente.js"></script>
-    <script src="js/class/pedido.js"></script>
-    <script src="js/class/producto.js"></script>
-    <script src="js/animacion.js"></script>
-    <script src="js/javier.js"></script>
-    <script src="js/liber.js"></script>
-    <script src="js/onload.js"></script>
-  </head>
+  <!-- Añadir css -->
+  <link rel="stylesheet" href="style/style.css" />
 
-  <body>
-    <header>
-      <div id="nav-menu">
-        <img
-          id="img-menu"
-          class="clickeable"
-          src="img/icons/menu35x35.png"
-          alt=""
-        />
-        <nav id="nav" style="display: none">
-          <h1>Categorías</h1>
-          <div class="clickeable" id="perfumeria">Perfumería</div>
-          <div class="clickeable" id="cosmetic">Cosmética</div>
-          <div class="clickeable" id="maquillaje">Maquillaje</div>
-          <div class="clickeable" id="higiene">Higiene</div>
-          <div class="clickeable" id="cabello">Cabello</div>
-          <div class="clickeable" id="todos">Ver todo</div>
-        </nav>
-      </div>
-      <div id="logo">
-        <img src="img/icons/logo150.png" alt="" />
-      </div>
-      <div id="user-menu">
-        <span id="user-title" class="clickeable">Identifícate/Regístrate</span>
-        <img id="user-img" class="clickeable" src="" alt="" height="50px" />
+  <!-- Añadir script -->
+  <script src="js/class/cliente.js"></script>
+  <script src="js/class/pedido.js"></script>
+  <script src="js/class/producto.js"></script>
+  <script src="js/animacion.js"></script>
+  <script src="js/javier.js"></script>
+  <script src="js/liber.js"></script>
+  <script src="js/onload.js"></script>
+</head>
 
-        <div id="cerrar-sesion" class="clickeable" style="display: none">
-          <img src="img/icons/icono-cerrar.png" alt="" />
-          <span>Cerrar sesión</span>
-        </div>
-      </div>
-    </header>
-    <main>
-      <div id="carrousel">
-        <span id="moverDerecha" class="moverDerecha">
-          <img
-            src="img/icons/flecha-lft.png"
-            alt="Mover a la derecha"
-            width="20px"
-          />
-        </span>
-        <div id="div-carrousel" style="display: none"></div>
-        <span id="moverIzquierda" class="moverIzquierda">
-          <img
-            src="img/icons/flecha-rgth.png"
-            alt="Mover a la izquierda"
-            width="20px"
-          />
-        </span>
-      </div>
-      <h2 id="title"></h2>
-      <div id="div-productos"></div>
-    </main>
-    <div id="div-carrito">
-      <svg id="contador" width="30" height="60" style="display: none">
-        <line
-          id="line-contador"
-          x1="15"
-          y1="45"
-          x2="15"
-          y2="45"
-          stroke="#aac5db"
-          class="count-dot"
-        />
-        <circle
-          id="circle-contador"
-          cx="15"
-          cy="45"
-          r="14"
-          fill="#aac5db"
-          stroke="#244B70"
-        />
-        <text id="text-contador" x="10.5" y="50" style="fill: #244b70"></text>
-      </svg>
-      <div id="div-logo-carrito" class="div-logo-carrito clickeable">
-        <img
-          id="logo-carrito"
-          src="img/icons/icono-carro75x75.png"
-          class="clickeable"
-          alt="Carrito de la compra"
-        />
-      </div>
-      <div id="carrito" style="display: none">
-        <table id="tabla-carrito">
-          <div>
-            <img
-              id="cerrar-carrito"
-              class="clickeable"
-              src="img/icons/cerrar-carrito30.png"
-              alt="Cerrar"
-            />
-          </div>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Producto</th>
-              <th>Cantidad</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody id="contenido-carrito">
-            <tr id="empty">
-              <td colspan="4">No existen productos que mostrar</td>
-            </tr>
-          </tbody>
-        </table>
-        <div id="div-total-carrito">
-          <span>Total:</span>
-          <span id="total-carrito">0.00€</span>
-        </div>
-        <div class="buttons">
-          <input
-            id="comprar"
-            type="button"
-            class="clickeable"
-            value="Comprar"
-          />
-          <input id="borrar" type="button" class="clickeable" value="Borrar" />
-        </div>
+<body>
+  <header>
+    <div id="nav-menu">
+      <img id="img-menu" class="clickeable" src="img/icons/menu35x35.png" alt="" />
+      <nav id="nav" style="display: none">
+        <h1>Categorías</h1>
+        <div class="clickeable" id="perfumeria">Perfumería</div>
+        <div class="clickeable" id="cosmetic">Cosmética</div>
+        <div class="clickeable" id="maquillaje">Maquillaje</div>
+        <div class="clickeable" id="higiene">Higiene</div>
+        <div class="clickeable" id="cabello">Cabello</div>
+        <div class="clickeable" id="todos">Ver todo</div>
+      </nav>
+    </div>
+    <div id="logo">
+      <img src="img/icons/logo150.png" alt="" />
+    </div>
+    <div id="user-menu">
+      <span id="user-title" class="clickeable">Identifícate/Regístrate</span>
+      <img id="user-img" class="clickeable" src="" alt="" height="50px" />
+
+      <div id="cerrar-sesion" class="clickeable" style="display: none">
+        <img src="img/icons/icono-cerrar.png" alt="" />
+        <span>Cerrar sesión</span>
       </div>
     </div>
-    <div class="modal-login" style="display: none">
-      <div>
-        <img
-          class="close-modal clickeable"
-          src="img/icons/icono-cerrar-azul15x15.png"
-          alt=""
-        />
-        <h1>Bienvenido</h1>
-        <hr />
-        <p id="login-ok"></p>
-        <br />
-        <!--Prueba de separación del título-->
-        <div class="form">
-          <label for="login-username">Email:</label>
-          <input type="email" name="login-username" id="login-username" />
-        </div>
-        <div class="form">
-          <label for="user-password">Contraseña:</label>
-          <input type="password" name="user-password" id="user-password" />
-        </div>
-        <input
-          id="iniciar"
-          class="clickeable"
-          type="button"
-          value="Iniciar Sesión"
-        />
-      </div>
+  </header>
+  <main>
+    <div id="carrousel">
+      <span id="moverDerecha" class="moverDerecha">
+        <img src="img/icons/flecha-lft.png" alt="Mover a la derecha" width="20px" />
+      </span>
+      <div id="div-carrousel" style="display: none"></div>
+      <span id="moverIzquierda" class="moverIzquierda">
+        <img src="img/icons/flecha-rgth.png" alt="Mover a la izquierda" width="20px" />
+      </span>
     </div>
-    <div class="modal-register" style="display: none">
-      <div>
-        <img
-          class="close-modal clickeable"
-          src="img/icons/icono-cerrar-azul15x15.png"
-          alt=""
-        />
-        <h1>Nuevo Usuario</h1>
-        <p id="singIn" class="clickeable">¿Ya tienes una cuenta?</p>
-        <hr />
-        <p id="register-ok"></p>
-        <br /><!--Prueba de separación del título-->
-        <div class="form">
-          <label for="register-name">Nombre completo:</label>
-          <input type="text" name="register-name" id="register-name" />
-        </div>
-        <div class="form">
-          <label for="register-dni">DNI:</label>
-          <input type="text" name="register-dni" id="register-dni" />
-        </div>
-        <div class="form">
-          <label for="register-phone">Teléfono:</label>
-          <input type="text" name="register-phone" id="register-phone" />
-        </div>
-        <div class="form">
-          <label for="register-address">Dirección:</label>
-          <input type="text" name="register-address" id="register-address" />
-        </div>
-        <div class="form">
-          <label for="register-birth">Fecha de nacimiento:</label>
-          <input type="date" name="register-birth" id="register-birth" />
-        </div>
-        <div class="form">
-          <label for="register-suscp">Suscripción:</label>
-          <select name="register-suscp" id="register-suscp">
-            <option value="basic">Básico</option>
-            <option value="club" selected>Cliente Club (3.99€/mes)</option>
-            <option value="premium">Premium (5.99€/mes)</option>
-          </select>
-        </div>
-        <div class="form">
-          <label for="register-card">Número de tarjeta:</label>
-          <input type="number" name="register-card" id="register-card" />
-        </div>
-        <div class="form">
-          <label for="register-email">Email:</label>
-          <input type="email" name="register-email" id="register-email" />
-        </div>
-        <div class="form">
-          <label for="login-password">Contraseña:</label>
-          <input type="password" name="login-password" id="login-password" />
-        </div>
-        <div class="form">
-          <label for="login-repeat-password">Repita la contraseña:</label>
-          <input
-            type="password"
-            name="login-repeat-password"
-            id="login-repeat-password"
-          />
-        </div>
-        <input
-          id="crear"
-          class="clickeable"
-          type="button"
-          value="Crear cuenta"
-        />
-      </div>
-    </div>
-
-    <!-- Animacion de imagen dentro de svg -->
-    <svg id="movePhoto" class="move">
-      <path id="path" fill="none" stroke="red"/>
-      <defs>
-        <circle id="myCircle" cx="0" cy="0" r="75" />
-        <pattern id="fillPhoto" width="1" height="1">
-          <image id="imgProduct" xlink:href="" x="-18" height="150" style="opacity: 0.9;"></image>
-        </pattern>
-      </defs>
-      <use
-        id="mask"
-        x="0"
-        y="0"
-        href="#myCircle"
-        fill="url(#fillPhoto)"
-      ></use>
+    <h2 id="title"></h2>
+    <div id="div-productos"></div>
+  </main>
+  <div id="div-carrito">
+    <svg id="contador" width="30" height="60" style="display: none">
+      <line id="line-contador" x1="15" y1="45" x2="15" y2="45" stroke="#aac5db" class="count-dot" />
+      <circle id="circle-contador" cx="15" cy="45" r="14" fill="#aac5db" stroke="#244B70" />
+      <text id="text-contador" x="10.5" y="50" style="fill: #244b70"></text>
     </svg>
-  </body>
+    <div id="div-logo-carrito" class="div-logo-carrito clickeable">
+      <img id="logo-carrito" src="img/icons/icono-carro75x75.png" class="clickeable" alt="Carrito de la compra" />
+    </div>
+    <div id="carrito" style="display: none">
+      <table id="tabla-carrito">
+        <div>
+          <img id="cerrar-carrito" class="clickeable" src="img/icons/cerrar-carrito30.png" alt="Cerrar" />
+        </div>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="contenido-carrito">
+          <tr id="empty">
+            <td colspan="4">No existen productos que mostrar</td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="div-total-carrito">
+        <span>Total:</span>
+        <span id="total-carrito">0.00€</span>
+      </div>
+      <div class="buttons">
+        <input id="comprar" type="button" class="clickeable" value="Comprar" />
+        <input id="borrar" type="button" class="clickeable" value="Borrar" />
+      </div>
+    </div>
+  </div>
+  <div class="modal-login" style="display: none">
+    <div>
+      <img class="close-modal clickeable" src="img/icons/icono-cerrar-azul15x15.png" alt="" />
+      <h1>Bienvenido</h1>
+      <hr />
+      <p id="login-ok"></p>
+      <br />
+      <!--Prueba de separación del título-->
+      <div class="form">
+        <label for="login-username">Email:</label>
+        <input type="email" name="login-username" id="login-username" />
+      </div>
+      <div class="form">
+        <label for="user-password">Contraseña:</label>
+        <input type="password" name="user-password" id="user-password" />
+      </div>
+      <input id="iniciar" class="clickeable" type="button" value="Iniciar Sesión" />
+    </div>
+  </div>
+  <div class="modal-register" style="display: none">
+    <div>
+      <img class="close-modal clickeable" src="img/icons/icono-cerrar-azul15x15.png" alt="" />
+      <h1>Nuevo Usuario</h1>
+      <p id="singIn" class="clickeable">¿Ya tienes una cuenta?</p>
+      <hr />
+      <p id="register-ok"></p>
+      <br />
+      <!--Prueba de separación del título-->
+      <div class="form">
+        <label for="register-name">Nombre completo:</label>
+        <input type="text" name="register-name" id="register-name" />
+      </div>
+      <div class="form">
+        <label for="register-dni">DNI:</label>
+        <input type="text" name="register-dni" id="register-dni" />
+      </div>
+      <div class="form">
+        <label for="register-phone">Teléfono:</label>
+        <input type="text" name="register-phone" id="register-phone" />
+      </div>
+      <div class="form">
+        <label for="register-address">Dirección:</label>
+        <input type="text" name="register-address" id="register-address" />
+      </div>
+      <div class="form">
+        <label for="register-birth">Fecha de nacimiento:</label>
+        <input type="date" name="register-birth" id="register-birth" />
+      </div>
+      <div class="form">
+        <label for="register-suscp">Suscripción:</label>
+        <select name="register-suscp" id="register-suscp">
+          <option value="basic">Básico</option>
+          <option value="club" selected>Cliente Club (3.99€/mes)</option>
+          <option value="premium">Premium (5.99€/mes)</option>
+        </select>
+      </div>
+      <div class="form">
+        <label for="register-card">Número de tarjeta:</label>
+        <input type="number" name="register-card" id="register-card" />
+      </div>
+      <div class="form">
+        <label for="register-email">Email:</label>
+        <input type="email" name="register-email" id="register-email" />
+      </div>
+      <div class="form">
+        <label for="login-password">Contraseña:</label>
+        <input type="password" name="login-password" id="login-password" />
+      </div>
+      <div class="form">
+        <label for="login-repeat-password">Repita la contraseña:</label>
+        <input type="password" name="login-repeat-password" id="login-repeat-password" />
+      </div>
+      <input id="crear" class="clickeable" type="button" value="Crear cuenta" />
+    </div>
+  </div>
+
+  <!-- Animacion de imagen dentro de svg -->
+  <svg id="movePhoto" class="move">
+    <path id="path" fill="none" stroke="red" />
+    <defs>
+      <circle id="myCircle" cx="0" cy="0" r="75" />
+      <pattern id="fillPhoto" width="1" height="1">
+        <image id="imgProduct" xlink:href="" x="-18" height="150" style="opacity: 0.9;"></image>
+      </pattern>
+    </defs>
+    <use id="mask" x="0" y="0" href="#myCircle" fill="url(#fillPhoto)">
+      <animateTransform id="transformPhoto" attributeName="transform" attributeType="XML" type="scale" from="1" to="0"/>
+      <animateMotion id="motionPhoto"><mpath xlink:href="#path"></mpath></animateMotion>
+    </use>
+  </svg>
+</body>
+
 </html>
