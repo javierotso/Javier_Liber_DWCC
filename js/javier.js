@@ -160,3 +160,12 @@ function totalCarrito() {
     let total = document.getElementById("total-carrito");
     total.innerHTML = totalCarrito.toFixed(2) + "€"
 }
+
+
+/**
+ * Función register
+ * 
+ */
+function register(){
+    
+}

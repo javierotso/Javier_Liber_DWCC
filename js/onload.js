@@ -1,4 +1,5 @@
 window.onload = () => {
+
   /*Escucha del menu lateral*/
   let menu = document.getElementById("img-menu");
   menu.addEventListener("click", extend);
@@ -16,7 +17,10 @@ window.onload = () => {
   cerrarSesion.addEventListener("click", closeSesion);
   /*Escucha del boton borrar*/
   let borra = document.getElementById("borrar");
-  borra.addEventListener("click", borrar);
+  borra.addEventListener("click", () => {
+    funcionModal = OK_VACIAR;
+    createModal("Vaciar carrito", "¿Está seguro de que desea vaciar el carrito?", null);
+  });
 
   /* Ponemos a la escucha los filtros del menú lateral */
   const NAV = document.getElementById("nav");

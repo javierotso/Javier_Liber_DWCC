@@ -114,8 +114,6 @@ function createCard(array, divParent, sales) {
         imgProduct.classList.add("cardImg");
         let img = element.path;
         imgProduct.setAttribute("src", img);
-
-
         /*
         He modificado esto, haciéndolo con un div para que me permita tachar parte del contenido
         */
@@ -136,8 +134,8 @@ function createCard(array, divParent, sales) {
                 }
             }
             if (!repeat) {
-                movePhoto(imgProduct);
                 addBag(e);
+                movePhoto(imgProduct);
             }
         });
 
@@ -190,10 +188,8 @@ function comprar() {
  * Función que borra todos los productos el carro
  */
 function borrar() {
-    if (confirm("¿Seguro que desea borrar su carro?")) {
-        arrayCarrito = [];
-        clearBag();
-    }
+    arrayCarrito = [];
+    clearBag();
 }
 
 /**
@@ -251,21 +247,23 @@ function listBag(array) {
             num.setAttribute("id", id_num);
             num.innerHTML = 1;
             let divCount = document.createElement("div");
-            divCount.addEventListener("click", (e) => {
-                changeCount(e, product);
-            });
-
+          
             let plus = document.createElement("input");
             plus.setAttribute("type", "button");
             plus.setAttribute("value", "+");
             plus.classList.add("clickeable");
-            // plus.addEventListener("click", changeCount);
             let less = document.createElement("input");
             less.setAttribute("type", "button");
             less.setAttribute("value", "-");
             less.classList.add("clickeable");
 
-            // less.addEventListener("click", changeCount);
+            plus.addEventListener("click", (e) => {
+                changeCount(e, product);
+            });
+            less.addEventListener("click", (e) => {
+                changeCount(e, product);
+            });
+
 
             let tdPrice = document.createElement("td");
             /*Añado id para cambiar totales */
@@ -299,21 +297,23 @@ function listBag(array) {
  * Función que borra la tabla del carro.
  */
 function clearBag() {
-    //No se por queno funciona =( =(
-    let clearChild = document.querySelectorAll(".list");
-   
-    for (let i = 0; i < clearChild.length; i++) {
-        const element = clearChild[i];
-        element.parentElement.removeChild(element);
+    if (arrayCarrito.length > 0) {
+        //No se por queno funciona =( =(
+        let clearChild = document.querySelectorAll(".list");
+
+        for (let i = 0; i < clearChild.length; i++) {
+            const element = clearChild[i];
+            element.parentElement.removeChild(element);
+        }
+        let empty = document.getElementById("empty");
+        if (empty.style.display != "none") {
+            empty.setAttribute("style", "display: none;");
+        } else {
+            empty.removeAttribute("style");
+        }
+        document.getElementById("contador").style.display = "none";
+        totalCarrito();
     }
-    let empty = document.getElementById("empty");
-    if (empty.style.display != "none") {
-        empty.setAttribute("style", "display: none;");
-    } else {
-        empty.removeAttribute("style");
-    }
-    document.getElementById("contador").style.display = "none";
-    totalCarrito();
 }
 /**
  * Función que suma/resta unidades del producto selecionado
@@ -328,12 +328,19 @@ function changeCount(e, product) {
     let trParent = element.parentNode.parentNode.parentNode;
     let count;
 
+
     if (element.value == "+") {
         count = parseInt(num.innerHTML) + 1;
         num.innerHTML = count;
     } else if (element.value == "-") {
         count = parseInt(num.innerHTML) - 1;
-        num.innerHTML = count;
+        if (count == 0) {
+            createModal("Eliminar articulo", "¿Quiere quitar el objeto del carro?", trParent);
+            funcionModal = OK_BORRAR;
+
+        } else {
+            num.innerHTML = count;
+        }
     }
 
     /*
@@ -348,29 +355,26 @@ function changeCount(e, product) {
     } else {
         productPrice = parseFloat(product.price).toFixed(2);
     }
-    productTotal.innerHTML = (productPrice * count).toFixed(2) + "€";
+    productTotal.innerHTML = (productPrice * parseInt(num.innerHTML)).toFixed(2) + "€";
+    totalCarrito();
 
-    if ((num.innerHTML) == 0) {
-        if (confirm("¿Quiere quitar el objeto del carro?")) {
-            trParent.parentNode.removeChild(trParent);
-            /*Borrar articulo de arrayCarrito*/
-            let id = trParent.getAttribute("name");
-            let repeat = false;
-            for (let i = 0; i < arrayCarrito.length && !repeat; i++) {
-                const article = arrayCarrito[i];
-                if (article.id == id) {
-                    repeat = true;
-                    arrayCarrito.splice(i, 1);
-                }
-            }
-        } else {
-            num.innerHTML = 1;
+}
+
+function restarFila(trParent) {
+    trParent.parentNode.removeChild(trParent);
+    /*Borrar articulo de arrayCarrito*/
+    let id = trParent.getAttribute("name");
+    let repeat = false;
+    for (let i = 0; i < arrayCarrito.length && !repeat; i++) {
+        const article = arrayCarrito[i];
+        if (article.id == id) {
+            repeat = true;
+            arrayCarrito.splice(i, 1);
         }
     }
     if (arrayCarrito.length == 0) {
         clearBag();
     }
-
     totalCarrito();
 }
 
@@ -542,5 +546,48 @@ function alertMessage(correct, p, message, element) {
         p.setAttribute("style", "color: #C82424");
     }
 
+}
+
+//--------------------------------------------------------------
+// NO FUNCIONA =(
+const OK_BORRAR = 1;
+const OK_VACIAR = 2;
+let funcionModal = OK_BORRAR;
+
+function createModal(title, msg, tr) {
+    let body = document.querySelector('body');
+    let modal = document.createElement('div');
+    modal.setAttribute('id', 'divModal');
+    modal.setAttribute('class', 'modal');
+    let modal_text = '<div><h1>' + title + '</h1><hr/><p>' + msg + '</p><br/><div id="modal-responde" class="buttons"><input id="aceptar" type="button" class="clickeable" value="Aceptar"/><input id="cancelar" type="button" class="clickeable" value="Cancelar"/></div></div>'
+    modal.innerHTML = modal_text;
+    body.appendChild(modal);
+    let otro = modalEscucha(tr);
+    console.log(otro)
+
+    // return modalResponde();
+}
+// let ok;
+function modalEscucha(tr) {
+    let btnAccept = document.getElementById("aceptar");
+    btnAccept.addEventListener("click", () => {
+        switch (funcionModal) {
+            case OK_BORRAR:
+                restarFila(tr);
+                cerrarModal();
+                break;
+            case OK_VACIAR:
+                borrar();
+                cerrarModal();
+                break;
+        }
+    }, { once: true });
+
+    document.getElementById("cancelar").addEventListener("click", cerrarModal, { once: true });
+}
+
+function cerrarModal() {
+    let modal = document.getElementById("divModal");
+    modal.parentElement.removeChild(modal);
 }
 
