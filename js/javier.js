@@ -14,27 +14,27 @@ function filtrarProductosEvent(e) {
         /*
         Mostrar título de donde estamos
         */
-       let title = document.getElementById("title");
-       let titleTxt = "Todo";
+        let title = document.getElementById("title");
+        let titleTxt = "Todo";
 
-       switch(elementId) {
-        case "cosmetic":
-            titleTxt = "Cosmética";
-            break;
-        case "higiene":
-            titleTxt = "Higiene";
-            break;
-        case "perfumeria":
-            titleTxt = "Perfumería";
-            break;
-        case "cabello":
-            titleTxt = "Cabello";
-            break;
-        case "maquillaje":
-            titleTxt = "Maquillaje";
-            break;
-       }
-       title.innerHTML = titleTxt;
+        switch (elementId) {
+            case "cosmetic":
+                titleTxt = "Cosmética";
+                break;
+            case "higiene":
+                titleTxt = "Higiene";
+                break;
+            case "perfumeria":
+                titleTxt = "Perfumería";
+                break;
+            case "cabello":
+                titleTxt = "Cabello";
+                break;
+            case "maquillaje":
+                titleTxt = "Maquillaje";
+                break;
+        }
+        title.innerHTML = titleTxt;
     }
 }
 
@@ -161,11 +161,98 @@ function totalCarrito() {
     total.innerHTML = totalCarrito.toFixed(2) + "€"
 }
 
+/**
+ * Guarda en una variable local todos los usuarios que están en el fichero clientes
+ */
+function obtenerClientes() {
+    fetch(urlClientes)
+        .then(data => data.json())
+        .then(users => {
+            usersList = users;
+        })
+}
+
 
 /**
- * Función register
- * 
+ * Funcion para registrar un nuevo usuario
+ * @param {*} p Elemento de tipo parrafo donde se mostrarán las alertas
+ * @param {*} element Elemento del modal
  */
-function register(){
-    
+function register(p, element) {
+    let correct = true;
+    let msg = "Se ha registrado correctamente";
+
+    let fullName = document.getElementById("register-name").value.trim();
+    let dni = document.getElementById("register-dni").value.trim();
+    let phone = document.getElementById("register-phone").value.trim();
+    let address = document.getElementById("register-address").value.trim();
+    let birthDate = document.getElementById("register-birth").value.trim();
+    let suscp = document.getElementById("register-suscp").value.trim();
+    let email = document.getElementById("register-email").value.trim();
+    let card = document.getElementById("register-card").value.trim();
+    let pwd = document.getElementById("login-password").value;
+    let repeatPwd = document.getElementById("login-repeat-password").value;
+
+    console.log(dni);
+    if (dni != null && dni != "" && phone != null && phone != "" && suscp != null
+        && suscp != "" && email != null && email != "" && pwd != null && pwd != ""
+        && repeatPwd != null && repeatPwd != "") {
+
+        if (pwd == repeatPwd) {
+            for (let i = 0; i < usersList.length && correct; i++) {
+                let user = usersList[i];
+                if (user.email == email || user.dni == dni || user.phone == phone) {
+                    correct = false;
+                    msg = "Ya existe un usuario registrado con los datos introducidos";
+                }
+            }
+        } else {
+            correct = false;
+            msg = "Las contraseñas no coinciden";
+        }
+    } else {
+        correct = false;
+        msg = "Por favor, rellene todos los campos obligatorios";
+    }
+
+    if (correct) {
+        let userId = parseInt(usersList[usersList.length - 1].id) + 1;
+        let user = new Cliente(userId, fullName, dni, phone, address, birthDate, suscp, card, email, pwd, DEFAULT_IMG);
+        usersList.push(user);
+        localStorage.setItem('user', JSON.stringify(user));
+        setTimeout(() => {
+            window.location.reload()
+        }, 3000);
+    }
+
+    alertMessage(correct, p, msg, element);
 }
+
+//-----------------------------------------------------------------------------------
+//Usuario
+/**
+ * Funcion para registrar un nuevo usuario
+ * @param {*} p Elemento de tipo parrafo donde se mostrarán las alertas
+ * @param {*} element Elemento del modal
+ 
+function register(p, element) {
+    let correct = false;
+    let message = "Ha ocurrido un error. Porfavor vuelva a intentarlo";
+
+    // Recoger los valores de todos los campos (puede ser un for?)
+    // let userName = document.getElementById("register-name").value;;
+
+    fetch(urlClientes)
+        .then(data => data.json())
+        .then(users => {
+            for (let i = 0; i < users.length && !correct; i++) {
+                let user = users[i];
+                //comprobar datos  
+                //correct = true;
+                //message = "Se ha regirtrado con exito";        
+            }
+        })
+        .then(returnLogin => {
+            alertMessage(correct, p, message, element);
+        })
+}*/

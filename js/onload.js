@@ -64,6 +64,9 @@ window.onload = () => {
   circle = document.getElementById("circle-contador");
   text = document.getElementById("text-contador");
 
-  /*Obtenemos los productos */
+  /* Obtenemos los productos */
   getProducts();
+
+  /* Obtenemos los usuarios */
+  obtenerClientes();
 };

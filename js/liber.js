@@ -14,6 +14,7 @@
 const timeout = 1500;
 const urlClientes = "data/clientes.json"
 const urlProductos = "data/productos.json"
+const DEFAULT_IMG = "img/user/usuario.jpg"
 
 //constantes tienda
 const DISCOUNT_CLUB = 0.95;
@@ -28,6 +29,7 @@ let arrayCarrito = [];
 let arrayClientes = [];
 let arrayProductos = [];
 let discount = SALES_DEFAULT;
+let usersList = [];
 
 /*Lista de productos */
 let allProductList = [];
@@ -247,7 +249,7 @@ function listBag(array) {
             num.setAttribute("id", id_num);
             num.innerHTML = 1;
             let divCount = document.createElement("div");
-          
+
             let plus = document.createElement("input");
             plus.setAttribute("type", "button");
             plus.setAttribute("value", "+");
@@ -387,29 +389,27 @@ function restarFila(trParent) {
  * @param {*} element Elemento del modal
  */
 function login(p, element) {
+    /*
+    Cambié esta función para que valide usuarios que se registran después y no están guardados en los ficheros
+    */
     let correct = false;
     let message = "Compruebe su email y contraseña";
 
     let userName = document.getElementById("login-username").value;
     let userPass = document.getElementById("user-password").value;
 
-    fetch(urlClientes)
-        .then(data => data.json())
-        .then(users => {
-            for (let i = 0; i < users.length && !correct; i++) {
-                let user = users[i];
-                if (user.email == userName) {
-                    if (user.password == userPass) {
-                        /* Guardamos el usuario en el localStorage para tener siempre acceso */
-                        localStorage.setItem('user', JSON.stringify(user));
-                        correct = true;
-                        message = "Ha iniciado sesión con exito"
-                    }
-                }
+    for (let i = 0; i < usersList.length && !correct; i++) {
+        let user = usersList[i];
+        if (user.email == userName) {
+            if (user.password == userPass) {
+                /* Guardamos el usuario en el localStorage para tener siempre acceso */
+                localStorage.setItem('user', JSON.stringify(user));
+                correct = true;
+                message = "Ha iniciado sesión con exito"
             }
-
-            alertMessage(correct, p, message, element);
-        })
+        }
+    }
+    alertMessage(correct, p, message, element);
 }
 /**
  * Funcion para cerrar sesion
@@ -421,35 +421,6 @@ function closeSesion() {
     window.location.reload();
 }
 
-
-//----------------------------------------------------------------------------------- 
-//Usuario
-/**
- * Funcion para registrar un nuevo usuario
- * @param {*} p Elemento de tipo parrafo donde se mostrarán las alertas
- * @param {*} element Elemento del modal
- */
-function register(p, element) {
-    let correct = false;
-    let message = "Ha ocurrido un error. Porfavor vuelva a intentarlo";
-
-    // Recoger los valores de todos los campos (puede ser un for?)
-    // let userName = document.getElementById("register-name").value;;
-
-    fetch(urlClientes)
-        .then(data => data.json())
-        .then(users => {
-            for (let i = 0; i < users.length && !correct; i++) {
-                let user = users[i];
-                //comprobar datos  
-                //correct = true;
-                //message = "Se ha regirtrado con exito";        
-            }
-        })
-        .then(returnLogin => {
-            alertMessage(correct, p, message, element);
-        })
-}
 /**
  * Funcion que muestra un mensaje de vivenvenida para el usuario, asi como su foto y su carro 
  * @param {*} cliente Objeto del cliente que ha iniciao sesión 
