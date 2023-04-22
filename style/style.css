@@ -456,3 +456,20 @@ h2 {
     color: var(--azul);
     margin: 20px 10px 10px 50px;
 }
+
+.cubreCarrousel {
+    /*cubreCarrusel.style.width = "100vw";
+    cubreCarrusel.style.height = "390px";
+    cubreCarrusel.style.backgroundColor = "#aac5dbb6";
+    cubreCarrusel.style.position = "absolute";
+    cubreCarrusel.style.display = "flex";
+    cub */
+
+    width: calc(100vw - 17px);
+    height: 390px;
+    background-color: #aac5dbb6;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

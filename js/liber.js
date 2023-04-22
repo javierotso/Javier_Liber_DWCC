@@ -90,10 +90,14 @@ function showProductsByUser(products) {
                 discount = DISCOUNT_PREMIUM;
                 break;
         }
+        
         createCard(products["salesProduct"], divCarrousel, discount);
+        /**Pongo interval para que se vayan moviendo los productos */
+        setInterval(moverCarrouselDerecha, 4000);
         createCard(products["products"], divProductos, SALES_DEFAULT);
     } else {
         createCard(products["products"], divProductos, SALES_DEFAULT);
+        noSuscpCarrousel(products["products"]);
     }
 }
 

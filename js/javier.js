@@ -130,7 +130,6 @@ function moverCarrouselDerecha() {
 
     divCarrousel.removeChild(primeraCard);
     divCarrousel.appendChild(primeraCard);
-    console.log(primeraCard);
 }
 
 /**
@@ -228,31 +227,31 @@ function register(p, element) {
     alertMessage(correct, p, msg, element);
 }
 
-//-----------------------------------------------------------------------------------
-//Usuario
-/**
- * Funcion para registrar un nuevo usuario
- * @param {*} p Elemento de tipo parrafo donde se mostrarán las alertas
- * @param {*} element Elemento del modal
- 
-function register(p, element) {
-    let correct = false;
-    let message = "Ha ocurrido un error. Porfavor vuelva a intentarlo";
+function noSuscpCarrousel(products) {
+    let myProducts = [];
 
-    // Recoger los valores de todos los campos (puede ser un for?)
-    // let userName = document.getElementById("register-name").value;;
+    console.log(products);
+    products.forEach((product) => {
+        if (product.discount) {
+            myProducts.push(product);
+        }
+    })
 
-    fetch(urlClientes)
-        .then(data => data.json())
-        .then(users => {
-            for (let i = 0; i < users.length && !correct; i++) {
-                let user = users[i];
-                //comprobar datos  
-                //correct = true;
-                //message = "Se ha regirtrado con exito";        
-            }
-        })
-        .then(returnLogin => {
-            alertMessage(correct, p, message, element);
-        })
-}*/
+    let carrousel = document.getElementById("carrousel");
+    let divCarrousel = document.getElementById("div-carrousel");
+    carrousel.removeAttribute("style");
+    divCarrousel.removeAttribute("style");
+    setInterval(moverCarrouselDerecha, 2000);
+    createCard(myProducts, divCarrousel, DISCOUNT_PREMIUM);
+
+    /*
+    Tapamos el carrousel 
+    */
+    let cubreCarrusel = document.createElement("div");
+    cubreCarrusel.setAttribute("class", "cubreCarrousel");
+    let h1 = document.createElement("h1");
+    h1.innerHTML = "¡SUSCRÍBETE PARA ACCEDER A ESTAS OFERTAS!";
+    h1.style.color = "hsl(209, 51%, 29%)";
+    cubreCarrusel.appendChild(h1);
+    carrousel.parentElement.insertBefore(cubreCarrusel, carrousel);
+}
