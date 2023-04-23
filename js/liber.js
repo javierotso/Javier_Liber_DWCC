@@ -15,6 +15,8 @@ const timeout = 1500;
 const urlClientes = "data/clientes.json"
 const urlProductos = "data/productos.json"
 const DEFAULT_IMG = "img/user/usuario.jpg"
+const OK_BORRAR = 1;
+const OK_VACIAR = 2;
 
 //constantes tienda
 const DISCOUNT_CLUB = 0.95;
@@ -30,6 +32,7 @@ let arrayClientes = [];
 let arrayProductos = [];
 let discount = SALES_DEFAULT;
 let usersList = [];
+let funcionModal = OK_BORRAR;
 
 /*Lista de productos */
 let allProductList = [];
@@ -194,8 +197,8 @@ function comprar() {
  * Función que borra todos los productos el carro
  */
 function borrar() {
-    arrayCarrito = [];
     clearBag();
+    arrayCarrito = [];
 }
 
 /**
@@ -304,7 +307,6 @@ function listBag(array) {
  */
 function clearBag() {
     if (arrayCarrito.length > 0) {
-        //No se por queno funciona =( =(
         let clearChild = document.querySelectorAll(".list");
 
         for (let i = 0; i < clearChild.length; i++) {
@@ -523,12 +525,12 @@ function alertMessage(correct, p, message, element) {
 
 }
 
-//--------------------------------------------------------------
-// NO FUNCIONA =(
-const OK_BORRAR = 1;
-const OK_VACIAR = 2;
-let funcionModal = OK_BORRAR;
-
+/**
+ * Método que crea un modal de confirmación
+ * @param {*} title Cabecera del modal
+ * @param {*} msg Mensaje del modal
+ * @param {*} tr Cuando sea necesario se mandará el objeto tr necesario para la funcion restarFila
+ */
 function createModal(title, msg, tr) {
     let body = document.querySelector('body');
     let modal = document.createElement('div');
@@ -537,12 +539,12 @@ function createModal(title, msg, tr) {
     let modal_text = '<div><h1>' + title + '</h1><hr/><p>' + msg + '</p><br/><div id="modal-responde" class="buttons"><input id="aceptar" type="button" class="clickeable" value="Aceptar"/><input id="cancelar" type="button" class="clickeable" value="Cancelar"/></div></div>'
     modal.innerHTML = modal_text;
     body.appendChild(modal);
-    let otro = modalEscucha(tr);
-    console.log(otro)
-
-    // return modalResponde();
+    modalEscucha(tr);
 }
-// let ok;
+/**
+ * Método que pone a la escucha los botones del modal
+ * @param {*} tr Cuando sea necesario se mandará el objeto tr necesario para la funcion restarFila
+ */
 function modalEscucha(tr) {
     let btnAccept = document.getElementById("aceptar");
     btnAccept.addEventListener("click", () => {
@@ -560,7 +562,9 @@ function modalEscucha(tr) {
 
     document.getElementById("cancelar").addEventListener("click", cerrarModal, { once: true });
 }
-
+/**
+ * Método para cerrar el modal una vez selecionas una opción
+ */
 function cerrarModal() {
     let modal = document.getElementById("divModal");
     modal.parentElement.removeChild(modal);
