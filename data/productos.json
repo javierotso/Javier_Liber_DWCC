@@ -125,7 +125,7 @@
         "filter": "cosmetic",
         "path": "img/product/product15.jpg", 
         "price": 61.80,
-        "discount": false
+        "discount": true
     },
     {
         "id": 16, 
@@ -141,7 +141,7 @@
         "filter": "cosmetic",
         "path": "img/product/product17.jpg", 
         "price": 62.10,
-        "discount": false
+        "discount": true
     },
     {
         "id": 18, 

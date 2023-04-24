@@ -58,6 +58,8 @@ window.onload = () => {
     helloUser(clienteLogeado);
   }
 
+  setInterval(moverCarrouselDerecha, 2000);
+
   /* Para las animaciones */
   contador = document.getElementById("contador");
   line = document.getElementById("line-contador");

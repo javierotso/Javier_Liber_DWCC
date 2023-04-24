@@ -393,7 +393,7 @@ REVISAR ESTE COLOR
 
 #carrousel {
     display: flex;
-
+    justify-content: center;
     margin: 0px 10px;
 }
 

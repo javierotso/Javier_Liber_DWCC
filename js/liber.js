@@ -96,7 +96,6 @@ function showProductsByUser(products) {
         
         createCard(products["salesProduct"], divCarrousel, discount);
         /**Pongo interval para que se vayan moviendo los productos */
-        setInterval(moverCarrouselDerecha, 4000);
         createCard(products["products"], divProductos, SALES_DEFAULT);
     } else {
         createCard(products["products"], divProductos, SALES_DEFAULT);
